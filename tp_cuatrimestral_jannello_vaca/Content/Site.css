@@ -4,6 +4,11 @@
     padding-bottom: 10%;
 }
 
+.login-img {
+    height: 50vh;
+}
+
+
 /* SCROLLBAR */ 
 
 body::-webkit-scrollbar {
@@ -26,12 +31,14 @@ body::-webkit-scrollbar-thumb {
     top: 0;
     min-height: 10%;
     min-width: 100%;
+    z-index: 1700;
 }
 #footer {
     color: white;
     bottom: 0;
     min-height: 10%;
     min-width: 100%;
+    z-index: 1700;
 }
 
 .width-20 {
