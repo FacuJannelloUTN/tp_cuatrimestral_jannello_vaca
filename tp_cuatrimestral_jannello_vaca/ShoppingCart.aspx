@@ -75,7 +75,7 @@
 
       <div class="mb-3">
           <div class="pt-4">
-              <h5 class="mb-3">Mi carrito</h5>
+              <h5 class="mb-3"><i class="fa fa-shopping-cart"></i> Mi carrito</h5>
               <ul class="list-group list-group-flush">
                   <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Productos
                     <span>$150.000</span>

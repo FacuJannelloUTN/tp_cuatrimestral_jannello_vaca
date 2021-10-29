@@ -41,3 +41,31 @@ body::-webkit-scrollbar-thumb {
     height: 50vh;
 }
 
+.home-cards-list {
+    z-index: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+ .home-cards-list .card {
+ margin: 10px auto;
+ border-radius: 40px;
+ cursor: pointer;
+ transition: 0.4s;
+ }
+
+.home-cards-list .card:hover {
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+  text-decoration: none !important;
+}
+
+.home-cards-list .card .card-img-top {
+ border-top-left-radius: 30px !important;
+ border-top-right-radius: 30px !important;
+ height:80% !important;
+}
+

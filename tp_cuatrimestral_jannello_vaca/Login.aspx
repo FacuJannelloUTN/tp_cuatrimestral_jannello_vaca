@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="tp_cuatrimestral_jannello_vaca.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
- <h2 class="text-center">Acceso de empleados</h2>
+ <h2 class="text-center">Acceso al portal de empleados</h2>
  <section>
   <div>
     <div class="row d-flex justify-content-center align-items-center">

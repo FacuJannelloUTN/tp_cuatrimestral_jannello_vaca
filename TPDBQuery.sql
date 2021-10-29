@@ -24,9 +24,9 @@ create table Productos (
   nombre varchar(200) not null,
   descripcion varchar(300) not null,
   URLimagen varchar(400) null,
-  idCategoria bigint not null foreign key references CategoriaProducto(id),
-  idMarca bigint not null foreign key references MarcaProducto(id),
-  idStock bigint not null foreign key references StockProducto(id) unique,
+  idCategoria bigint not null foreign key references CategoriasProductos(id),
+  idMarca bigint not null foreign key references MarcasProductos(id),
+  idStock bigint not null foreign key references StocksProductos(id) unique,
 )
 go
 create table TiposDeUsuarios(
@@ -39,7 +39,7 @@ create Table Usuarios (
    nombre varchar(30) null unique,
    contrasenia varchar(30) null,
    mail varchar(60) not null unique,
-   idTipoDeUsuario bigint not null foreign key references TipoDeUsuario(id)
+   idTipoDeUsuario bigint not null foreign key references TiposDeUsuarios(id)
 )
 go
 create Table Carritos (
@@ -54,7 +54,8 @@ go
 create Table ProductosEnCarrito (
  idCarrito bigint not null foreign key references Carritos(id),
  idProducto bigint not null foreign key references Productos(id),
- precioDeVenta money not null
+ precioDeVenta money not null,
+ cantidad int not null
 )
 go
 create Table Descuentos (
@@ -64,7 +65,8 @@ create Table Descuentos (
 go
 create Table Pedidos (
  idCarrito bigint not null foreign key references Carritos(id),
- entregado bit not null
+ entregado bit not null,
+ ganancia money not null
 )
 go
 insert into CategoriasProductos(nombre)
@@ -84,3 +86,4 @@ insert into Descuentos(codigo, porcentaje)
 values
 ('SUPER50', 50),
 ('OPEN25', 25)
+

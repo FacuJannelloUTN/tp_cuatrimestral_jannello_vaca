@@ -11,7 +11,8 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-
+    <link href="Content/animate.css" rel="stylesheet" />
+    <link href="Content/font-awesome.css" rel="stylesheet" />
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
@@ -52,16 +53,21 @@
                  <ul class="navbar-nav mr-auto">
                     <li class="nav-item active" >
                         <a class="nav-link text-light" runat="server" href="~/Products">
-                             Catálogo
+                            <i class="fa fa-rocket"></i> Catálogo
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" runat="server" href="~/ShoppingCart">
-                            Mi Carrito
+                            <i class="fa fa-shopping-cart"></i> Mi Carrito
                         </a>
                     </li>
                  </ul>
              </div>
+            <div>
+                <a class="nav-link text-light" runat="server" href="~/Login">
+                            <i class="fa fa-sign-in"></i> Portal de empleados</a>
+
+            </div>
         </nav>
         <main class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
