@@ -81,7 +81,7 @@
                     <span>$150.000</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center px-0">Descuento
-                    <span>0%</span>
+                    <asp:Label ID="LabelDescuento" runat="server" Text="0%"></asp:Label>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                       <div>
@@ -103,8 +103,11 @@
             <div class="collapse" id="box-descuento">
                 <div class="mt-3">
                     <div class="md-form md-outline mb-0">
-                        <input type="text" id="discount-code" class="form-control font-weight-light"
-                            placeholder="Ingrese código de descuento">
+                        <asp:TextBox ID="TextBoxCodigoDescuento" runat="server" CssClass="form-control font-weight-light col-10" Text="" placeholder="Ingrese código de descuento"></asp:TextBox>
+                        <div class="input-group-append">
+                                <asp:Button ID="ButtonSubmitCodigo" runat="server" Text="Ingresar" CssClass="btn btn-outline-primary" OnClick="ButtonSubmitCodigo_Click"/>
+                                <asp:Label ID="LabelMensajeRespuestaCodigo" runat="server" Text=""></asp:Label>
+                        </div>
                     </div>
                 </div>
             </div>
