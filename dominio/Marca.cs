@@ -8,10 +8,9 @@ namespace dominio
 {
     public class Marca
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Descripcion { get; set; }
-
-        public Marca(int id, string desc)
+        public Marca(long id, string desc)
         {
             this.Id = id;
             this.Descripcion = desc;

@@ -8,10 +8,10 @@ namespace dominio
 {
     public class Categoria
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Descripcion { get; set; }
-
-        public Categoria(int id, string desc)
+        
+        public Categoria(long id, string desc)
         {
             this.Id = id;
             this.Descripcion = desc;

@@ -22,7 +22,7 @@ namespace negocio
                 AccesoDatos.ejecutarLectura();
                 while (AccesoDatos.Lector.Read())
                 {
-                    Categoria categoria = new Categoria((int)AccesoDatos.Lector["id"], (string)AccesoDatos.Lector["nombre"]);
+                    Categoria categoria = new Categoria((long)AccesoDatos.Lector["id"], (string)AccesoDatos.Lector["nombre"]);
                     lista.Add(categoria);
                 }
             }

@@ -1,9 +1,6 @@
-﻿using System;
+﻿using dominio;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dominio;
 
 namespace negocio
 {
@@ -22,7 +19,7 @@ namespace negocio
                 AccesoDatos.ejecutarLectura();
                 while (AccesoDatos.Lector.Read())
                 {
-                    Marca marca = new Marca((int)AccesoDatos.Lector["id"], (string)AccesoDatos.Lector["nombre"]);
+                    Marca marca = new Marca((long)AccesoDatos.Lector["id"], (string)AccesoDatos.Lector["nombre"]);
                     lista.Add(marca);
                 }
             }

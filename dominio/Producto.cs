@@ -7,10 +7,10 @@ using System.ComponentModel;
 
 namespace dominio
 {
-    class Producto
+    public class Producto
     {
         [DisplayName("ID")]
-        public int Id { get; set; }
+        public long Id { get; set; }
         [DisplayName("Código de Artículo")]
         public string CodigoArticulo { get; set; }
         public string Nombre { get; set; }
@@ -23,6 +23,6 @@ namespace dominio
         [DisplayName("URL de la imagen")]
         public string URLimagen { get; set; }
         public decimal Precio { get; set; }
-        public int Stock { get; set; }
+        public long Stock { get; set; }
     }
 }
