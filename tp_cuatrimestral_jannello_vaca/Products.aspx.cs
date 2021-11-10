@@ -14,9 +14,33 @@ namespace tp_cuatrimestral_jannello_vaca
         public List<Producto> allProductos;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+                ProductoNegocio productoNegocio = new ProductoNegocio();
+                CategoriaNegocio CategoriaNegocio = new CategoriaNegocio();
+                MarcaNegocio MarcaNegocio = new MarcaNegocio();
+                allProductos = productoNegocio.listar("");
+
+                products_categorias.Items.Clear();
+                products_categorias.Items.Add("Todos");
+                foreach (Categoria item in CategoriaNegocio.listar(""))
+                {
+                    products_categorias.Items.Add(item.Descripcion);
+                }
+
+                products_marca.Items.Clear();
+                products_marca.Items.Add("Todos");
+                foreach (Marca item in MarcaNegocio.listar(""))
+                {
+                    products_marca.Items.Add(item.Descripcion);
+                }
+        }
+
+        protected void products_buscar_TextChanged(object sender, EventArgs e)
+        {
             ProductoNegocio productoNegocio = new ProductoNegocio();
-            allProductos = productoNegocio.listar("");
-            
+            allProductos = productoNegocio.listar(" where P.nombre like '%" + products_buscar.Text + "%'");
+            return;
+
         }
     }
 }

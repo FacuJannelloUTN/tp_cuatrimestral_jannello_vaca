@@ -87,3 +87,8 @@ values
 ('SUPER50', 50),
 ('OPEN25', 25)
 
+Select  P.id id,P.codArticulo,P.nombre,P.descripcion,M.nombre 'marca',C.nombre 'categoria',
+P.URLimagen,P.precio, P.idMarca IdMarca, P.idCategoria IdCategoria, S.cantidad 'stock' from Productos P
+inner join MarcasProductos M on M.id=P.idMarca
+inner join CategoriasProductos C on C.id=P.idCategoria
+inner join StocksProductos S on S.id=P.idStock

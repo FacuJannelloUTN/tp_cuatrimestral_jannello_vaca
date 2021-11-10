@@ -18,13 +18,27 @@
                         <div class="d-flex justify-content-between">
                             <div>
                                 <h5>Televisor Smart TV</h5>
-                                <p class="mb-2 text-muted text-uppercase small">Marca: LG</p>
-                                <p class="mb-3 text-muted text-uppercase small">Categoría: Televisores</p>
+                                <p class="mb-2 text-muted text-uppercase small">Marca: <asp:Label Text="LG" runat="server" /></p>
+                                <p class="mb-3 text-muted text-uppercase small">Categoría: <asp:Label Text="Televisores" runat="server" /></p>
                             </div>
                             <div>
                                 <div>
                                     <span class="col-4">Cantidad: </span>
-                                    <input class="col-4" min="0" name="quantity" value="1" type="number">
+                                    <asp:TextBox runat="server" CssClass="col-4" min="0" ID="quantity" Text="1"  
+                                     TextMode="Number" onkeypress="javascript:return ValidarNumerosEnteros(event)" AutoPostBack="true" ></asp:TextBox>
+                                
+                                <script>
+                                    function ValidarNumerosEnteros(e) {
+                                        var key;
+                                        if (window.event) {
+                                            key = e.keycode;
+                                        }
+                                        else if(e.which) {
+                                            key = e.which;
+                                        }
+                                        if (key < 48 || key > 57) { return false; } return true;
+                                    }
+                                </script>
                                 </div>
                             </div>
                         </div>
@@ -33,38 +47,6 @@
                                 <a href="#!" type="button" class="small text-uppercase mr-3">Eliminar item </a>
                             </div>
                             <p class="mb-0">Precio por unidad: <span><strong>$50.000</strong></span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr class="mb-4">
-            <div class="row mb-4">
-                <div class="col-md-5 col-lg-3 col-xl-3">
-                    <div class="rounded mb-3 mb-md-0">
-                        <img class="img-fluid w-100"
-                             src="https://www.naldo.com.ar/medias/405422.jpg-515Wx515H?context=bWFzdGVyfHJvb3R8MTYxMzN8aW1hZ2UvanBlZ3xoNzAvaGEzLzk1ODgwNzEwMzkwMDYuanBnfGM2NWYwMzRhMzI0NzU0NWEwYjEwNjhjNDEwM2FlMjFmNGEzOTkzNWVhNzc0NDZhNmI0ZDNkMmJhNjZiNGI4YTY" alt="Producto en carrito">
-                    </div>
-                </div>
-                <div class="col-md-7 col-lg-9 col-xl-9">
-                    <div>
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <h5>Moto G30</h5>
-                                <p class="mb-2 text-muted text-uppercase small">Marca: Motorola</p>
-                                <p class="mb-3 text-muted text-uppercase small">Categoría: Celulares</p>
-                            </div>
-                            <div>
-                                <div>
-                                    <span class="col-4">Cantidad: </span>
-                                    <input class="col-4" min="0" name="quantity" value="1" type="number">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <a href="#!" type="button" class="small text-uppercase mr-3"> Eliminar item </a>
-                            </div>
-                            <p class="mb-0">Precio por unidad: <span><strong>$22.000</strong></span></p>
                         </div>
                     </div>
                 </div>
