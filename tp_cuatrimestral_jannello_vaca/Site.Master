@@ -66,6 +66,11 @@
                             <i class="fa fa-shopping-bag"></i> Marcas
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" runat="server" href="~/AdmCategorias">
+                            <i class="fa fa-shopping-bag"></i> Categorías
+                        </a>
+                    </li>
                  </ul>
             </div>
             <div>

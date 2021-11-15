@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdmCategorias.aspx" />
     <Content Include="AdmMarcas.aspx" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\animate.min.css" />
@@ -260,6 +261,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdmCategorias.aspx.cs">
+      <DependentUpon>AdmCategorias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdmCategorias.aspx.designer.cs">
+      <DependentUpon>AdmCategorias.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdmMarcas.aspx.cs">
       <DependentUpon>AdmMarcas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
