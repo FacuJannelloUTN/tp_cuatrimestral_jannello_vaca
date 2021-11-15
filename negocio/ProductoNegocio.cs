@@ -20,7 +20,7 @@ namespace negocio
                                     "P.URLimagen,P.precio, P.idMarca IdMarca, P.idCategoria IdCategoria, S.cantidad 'stock' from Productos P " +
                                     "inner join MarcasProductos M on M.id=P.idMarca " +
                                     "inner join CategoriasProductos C on C.id=P.idCategoria " +
-                                    "inner join StocksProductos S on S.id=P.idStock" + where;
+                                    "inner join StocksProductos S on S.id=P.idStock " + where;
                 AccesoDatos.setearConsulta(consulta);
                 AccesoDatos.ejecutarLectura();
                 while (AccesoDatos.Lector.Read())

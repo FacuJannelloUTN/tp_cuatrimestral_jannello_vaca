@@ -15,7 +15,6 @@ namespace negocio
             List<Categoria> lista = new List<Categoria>();
             try
             {
-                AccesoDatos.cerrarConexion();
                 string consulta = "Select  * from CategoriasProductos" + where;
 
                 AccesoDatos.setearConsulta(consulta);
