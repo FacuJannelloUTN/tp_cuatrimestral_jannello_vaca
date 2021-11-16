@@ -1,16 +1,13 @@
-﻿using System;
+﻿using dominio;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dominio;
 
 namespace negocio
 {
     public class ProductoNegocio
     {
         AccesoDatos AccesoDatos = new AccesoDatos("(local)\\SQLEXPRESS", "TPFinalPrograIII");
-        public List<Producto> listar(string where)
+        public List<Producto> listar(string and)
         {
             List<Producto> lista = new List<Producto>();
             try
@@ -19,7 +16,7 @@ namespace negocio
                 string consulta = "Select  P.id id,P.codArticulo,P.nombre,P.descripcion,M.nombre 'marca',C.nombre 'categoria'," +
                                     "P.URLimagen,P.precio, P.idMarca IdMarca, P.idCategoria IdCategoria, P.stock from Productos P " +
                                     "inner join MarcasProductos M on M.id=P.idMarca " +
-                                    "inner join CategoriasProductos C on C.id=P.idCategoria " + where;
+                                    "inner join CategoriasProductos C on C.id=P.idCategoria where P.estado = 1" + and;
                 AccesoDatos.setearConsulta(consulta);
                 AccesoDatos.ejecutarLectura();
                 while (AccesoDatos.Lector.Read())
@@ -63,12 +60,12 @@ namespace negocio
                 $"URLImagen ='{prod.URLimagen}', stock = {prod.Stock}, idCategoria = {prod.Categoria.Id}, idMarca = {prod.Marca.Id} where id = {prod.Id}";
             try
             {
-              AccesoDatos.setearConsulta(consulta);
-              AccesoDatos.ejectutarAccion();
+                AccesoDatos.setearConsulta(consulta);
+                AccesoDatos.ejectutarAccion();
             }
             catch (Exception ex)
             {
-                    throw ex;
+                throw ex;
             }
             finally
             {
@@ -91,6 +88,24 @@ namespace negocio
             finally
             {
                 AccesoDatos.cerrarConexion();
+            }
+        }
+        public void eliminarConBajaLogica(long id)
+        {
+            string consulta = $"Update Productos set estado = 0 where id = {id}";
+            try
+            {
+                AccesoDatos.setearConsulta(consulta);
+                AccesoDatos.ejectutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                AccesoDatos.cerrarConexion();
+
             }
         }
     }

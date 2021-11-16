@@ -170,6 +170,7 @@ namespace tp_cuatrimestral_jannello_vaca
         protected void ButtonCancelarCreacion_Click(object sender, EventArgs e)
         {
             this.setearProductoVacioEnSession();
+            this.vaciarCamposCreacion();
             PanelCreacionProducto.Visible = false;
         }
 
@@ -270,6 +271,14 @@ namespace tp_cuatrimestral_jannello_vaca
             TextBoxStockCreacion.Text = "";
             TextBoxURLImagenCreacion.Text = "";
             TextBoxPrecioCreacion.Text = "";
+        }
+
+        protected void ButtonEliminar_Click(object sender, EventArgs e)
+        {
+            ProductoNegocio prodNeg = new ProductoNegocio();
+            Producto prod = (Producto)Session["selectedProducto"];
+            prodNeg.eliminarConBajaLogica(prod.Id);
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
     }
 }

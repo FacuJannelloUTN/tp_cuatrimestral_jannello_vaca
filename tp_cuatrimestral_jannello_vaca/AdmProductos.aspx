@@ -64,7 +64,7 @@
                         <asp:TextBox ID="TextBoxPrecio" runat="server" CssClass="form-control font-weight-light mb-3" OnTextChanged="TextBoxPrecio_TextChanged" AutoPostBack="true"></asp:TextBox>
                     </div>
                 </div>
-                <asp:Button ID="ButtonEliminar" runat="server" Text="Eliminar producto" CssClass="btn btn-outline-danger ml-5" />
+                <asp:Button ID="ButtonEliminar" runat="server" Text="Eliminar producto" CssClass="btn btn-outline-danger ml-5" onclick="ButtonEliminar_Click"/>
             </asp:Panel>
             <asp:Panel ID="PanelCreacionProducto" runat="server" Visible="false">
                 <div class="d-flex">

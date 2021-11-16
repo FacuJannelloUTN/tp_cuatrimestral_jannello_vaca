@@ -38,7 +38,7 @@ namespace tp_cuatrimestral_jannello_vaca
         protected void products_buscar_TextChanged(object sender, EventArgs e)
         {
             ProductoNegocio productoNegocio = new ProductoNegocio();
-            allProductos = productoNegocio.listar($"where P.nombre like '{products_buscar.Text}'");
+            allProductos = productoNegocio.listar($"and P.nombre like '{products_buscar.Text}'");
             return;
 
         }
