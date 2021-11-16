@@ -75,5 +75,23 @@ namespace negocio
                 AccesoDatos.cerrarConexion();
             }
         }
+        public void crearNuevo(Producto prod)
+        {
+            string consulta = "Insert into Productos (precio, codArticulo, nombre, descripcion, URLimagen, stock, idCategoria, idMarca) values(" +
+                $"{prod.Precio}, '{prod.CodigoArticulo}', '{prod.Nombre}', '{prod.Descripcion}', '{prod.URLimagen}', {prod.Stock}, {prod.Categoria.Id}, {prod.Marca.Id})";
+            try
+            {
+                AccesoDatos.setearConsulta(consulta);
+                AccesoDatos.ejectutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                AccesoDatos.cerrarConexion();
+            }
+        }
     }
 }

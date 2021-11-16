@@ -21,6 +21,7 @@ namespace tp_cuatrimestral_jannello_vaca
             this.updateDropdownProductos();
             this.updateDropdownMarcas();
             this.updateDropdownCategorias();
+            this.setearProductoVacioEnSession();
             }
         }
 
@@ -49,6 +50,8 @@ namespace tp_cuatrimestral_jannello_vaca
             Session.Add("allCategorias", allCategorias);
             DropDownListCategorias.DataSource = (List<Categoria>)Session["allCategorias"];
             DropDownListCategorias.DataBind();
+            DropDownListCategoriasCreacion.DataSource = (List<Categoria>)Session["allCategorias"];
+            DropDownListCategoriasCreacion.DataBind();
 
         }
         private void updateDropdownMarcas()
@@ -58,7 +61,8 @@ namespace tp_cuatrimestral_jannello_vaca
             Session.Add("allMarcas", allMarcas);
             DropDownListMarcas.DataSource = (List<Marca>)Session["allMarcas"];
             DropDownListMarcas.DataBind();
-
+            DropDownListMarcasCreacion.DataSource = (List<Marca>)Session["allMarcas"];
+            DropDownListMarcasCreacion.DataBind();
         }
         private void updateDataSelectedProducto()
         {
@@ -156,6 +160,116 @@ namespace tp_cuatrimestral_jannello_vaca
             ProductoNegocio prodNeg = new ProductoNegocio();
             prodNeg.actualizar(prod);
             this.updateTablaProductos();
+        }
+
+        protected void ButtonCrear_Click(object sender, EventArgs e)
+        {
+            PanelCreacionProducto.Visible = true;
+        }
+
+        protected void ButtonCancelarCreacion_Click(object sender, EventArgs e)
+        {
+            this.setearProductoVacioEnSession();
+            PanelCreacionProducto.Visible = false;
+        }
+
+        protected void TextBoxNombreCreacion_TextChanged(object sender, EventArgs e)
+        {
+            Producto prod = new Producto();
+            prod = (Producto)Session["productoCreacion"];
+            prod.Nombre = TextBoxNombreCreacion.Text;
+            Session.Add("productoCreacion", prod);
+        }
+
+        protected void TextBoxDescripcionCreacion_TextChanged(object sender, EventArgs e)
+        {
+
+            Producto prod = new Producto();
+            prod = (Producto)Session["productoCreacion"];
+            prod.Descripcion = TextBoxDescripcionCreacion.Text;
+            Session.Add("productoCreacion", prod);
+        }
+
+        protected void TextBoxCodigoProductoCreacion_TextChanged(object sender, EventArgs e)
+        {
+            Producto prod = new Producto();
+            prod = (Producto)Session["productoCreacion"];
+            prod.CodigoArticulo = TextBoxCodigoProductoCreacion.Text;
+            Session.Add("productoCreacion", prod);
+
+        }
+
+        protected void TextBoxStockCreacion_TextChanged(object sender, EventArgs e)
+        {
+            Producto prod = new Producto();
+            prod = (Producto)Session["productoCreacion"];
+            prod.Stock = long.Parse(TextBoxStockCreacion.Text);
+            Session.Add("productoCreacion", prod);
+        }
+
+        protected void TextBoxURLImagenCreacion_TextChanged(object sender, EventArgs e)
+        {
+            Producto prod = new Producto();
+            prod = (Producto)Session["productoCreacion"];
+            prod.URLimagen = TextBoxURLImagenCreacion.Text;
+            Session.Add("productoCreacion", prod);
+        }
+
+        protected void TextBoxPrecioCreacion_TextChanged(object sender, EventArgs e)
+        {
+            Producto prod = new Producto();
+            prod = (Producto)Session["productoCreacion"];
+            prod.Precio = decimal.Parse(TextBoxPrecioCreacion.Text);
+            Session.Add("productoCreacion", prod);
+
+        }
+
+        protected void DropDownListCategoriasCreacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Producto prod = new Producto();
+            prod = (Producto)Session["productoCreacion"];
+            long id = long.Parse(DropDownListCategoriasCreacion.SelectedItem.Value);
+            prod.Categoria = ((List<Categoria>)Session["allCategorias"]).Find(c => c.Id == id);
+            Session.Add("productoCreacion", prod);
+        }
+
+        protected void DropDownListMarcasCreacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Producto prod = new Producto();
+            prod = (Producto)Session["productoCreacion"];
+            long id = long.Parse(DropDownListMarcasCreacion.SelectedItem.Value);
+            prod.Marca = ((List<Marca>)Session["allMarcas"]).Find(m => m.Id == id);
+            Session.Add("productoCreacion", prod);
+        }
+
+        protected void ButtonConfirmarCreacion_Click(object sender, EventArgs e)
+        {
+            ProductoNegocio prodNeg = new ProductoNegocio();
+            prodNeg.crearNuevo((Producto)Session["productoCreacion"]);
+            this.updateTablaProductos();
+            this.vaciarCamposCreacion();
+            this.setearProductoVacioEnSession();
+            PanelCreacionProducto.Visible = false;
+        }
+
+        protected void setearProductoVacioEnSession()
+        {
+            Producto productoVacio = new Producto();
+            long idMarca = long.Parse(DropDownListMarcasCreacion.SelectedItem.Value);
+            long idCategoria = long.Parse(DropDownListCategoriasCreacion.SelectedItem.Value);
+            productoVacio.Categoria = ((List<Categoria>)Session["allCategorias"]).Find(c => c.Id == idCategoria);
+            productoVacio.Marca = ((List<Marca>)Session["allMarcas"]).Find(m => m.Id == idMarca);
+            Session.Add("productoCreacion", productoVacio);
+        }
+
+        protected void vaciarCamposCreacion()
+        {
+            TextBoxCodigoProductoCreacion.Text = "";
+            TextBoxNombreCreacion.Text = "";
+            TextBoxDescripcionCreacion.Text = "";
+            TextBoxStockCreacion.Text = "";
+            TextBoxURLImagenCreacion.Text = "";
+            TextBoxPrecioCreacion.Text = "";
         }
     }
 }
