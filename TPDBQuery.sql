@@ -12,11 +12,6 @@ create table MarcasProductos (
   nombre varchar(200) not null unique 
 )
 go
-create table StocksProductos (
-  id bigint not null primary key identity(1,1),
-  cantidad bigint not null 
-)
-go 
 create table Productos (
   id bigint not null primary key identity(10,10),
   precio money not null,
@@ -24,9 +19,9 @@ create table Productos (
   nombre varchar(200) not null,
   descripcion varchar(300) not null,
   URLimagen varchar(400) null,
+  stock bigint null,
   idCategoria bigint not null foreign key references CategoriasProductos(id),
-  idMarca bigint not null foreign key references MarcasProductos(id),
-  idStock bigint not null foreign key references StocksProductos(id) unique,
+  idMarca bigint not null foreign key references MarcasProductos(id)
 )
 go
 create table TiposDeUsuarios(
@@ -78,17 +73,12 @@ insert into TiposDeUsuarios(nombre)
 values ('Admin'), ('Cliente')
 insert into StocksProductos(cantidad)
 values (100),(80), (29), (42), (44)
-insert into Productos(precio, nombre, descripcion, codArticulo, URLimagen, idCategoria, idMarca, idStock)
+insert into Productos(precio, nombre, descripcion, codArticulo, URLimagen, idCategoria, idMarca, stock)
 values 
-(50000, 'Smart TV', 'Una tele para toda la familia', 'TVG20231', 'https://http2.mlstatic.com/D_NQ_NP_682817-MLA47690303593_092021-O.webp', 1, 5, 1),
-(22000, 'MotoG30', 'Un celular que te hará vibrar de la emoción', 'CD220815', 'https://www.naldo.com.ar/medias/405422.jpg-515Wx515H?context=bWFzdGVyfHJvb3R8MTYxMzN8aW1hZ2UvanBlZ3xoNzAvaGEzLzk1ODgwNzEwMzkwMDYuanBnfGM2NWYwMzRhMzI0NzU0NWEwYjEwNjhjNDEwM2FlMjFmNGEzOTkzNWVhNzc0NDZhNmI0ZDNkMmJhNjZiNGI4YTY', 2, 4, 2)
+(50000, 'Smart TV', 'Una tele para toda la familia', 'TVG20231', 'https://http2.mlstatic.com/D_NQ_NP_682817-MLA47690303593_092021-O.webp', 1, 5, 80),
+(22000, 'MotoG30', 'Un celular que te hará vibrar de la emoción', 'CD220815', 'https://www.naldo.com.ar/medias/405422.jpg-515Wx515H?context=bWFzdGVyfHJvb3R8MTYxMzN8aW1hZ2UvanBlZ3xoNzAvaGEzLzk1ODgwNzEwMzkwMDYuanBnfGM2NWYwMzRhMzI0NzU0NWEwYjEwNjhjNDEwM2FlMjFmNGEzOTkzNWVhNzc0NDZhNmI0ZDNkMmJhNjZiNGI4YTY', 2, 4, 50)
 insert into Descuentos(codigo, porcentaje)
 values
 ('SUPER50', 50),
 ('OPEN25', 25)
-
-Select  P.id id,P.codArticulo,P.nombre,P.descripcion,M.nombre 'marca',C.nombre 'categoria',
-P.URLimagen,P.precio, P.idMarca IdMarca, P.idCategoria IdCategoria, S.cantidad 'stock' from Productos P
-inner join MarcasProductos M on M.id=P.idMarca
-inner join CategoriasProductos C on C.id=P.idCategoria
-inner join StocksProductos S on S.id=P.idStock
+ 

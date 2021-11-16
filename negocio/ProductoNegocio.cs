@@ -17,10 +17,9 @@ namespace negocio
             {
 
                 string consulta = "Select  P.id id,P.codArticulo,P.nombre,P.descripcion,M.nombre 'marca',C.nombre 'categoria'," +
-                                    "P.URLimagen,P.precio, P.idMarca IdMarca, P.idCategoria IdCategoria, S.cantidad 'stock' from Productos P " +
+                                    "P.URLimagen,P.precio, P.idMarca IdMarca, P.idCategoria IdCategoria, P.stock from Productos P " +
                                     "inner join MarcasProductos M on M.id=P.idMarca " +
-                                    "inner join CategoriasProductos C on C.id=P.idCategoria " +
-                                    "inner join StocksProductos S on S.id=P.idStock " + where;
+                                    "inner join CategoriasProductos C on C.id=P.idCategoria " + where;
                 AccesoDatos.setearConsulta(consulta);
                 AccesoDatos.ejecutarLectura();
                 while (AccesoDatos.Lector.Read())
@@ -55,6 +54,26 @@ namespace negocio
                 AccesoDatos.cerrarConexion();
             }
             return lista;
+        }
+
+        public void actualizar(Producto prod)
+        {
+            string consulta = $"update Productos set precio = '{prod.Precio}'," +
+                $"codArticulo = '{prod.CodigoArticulo}', nombre ='{prod.Nombre}', descripcion='{prod.Descripcion}'," +
+                $"URLImagen ='{prod.URLimagen}', stock = {prod.Stock}, idCategoria = {prod.Categoria.Id}, idMarca = {prod.Marca.Id} where id = {prod.Id}";
+            try
+            {
+              AccesoDatos.setearConsulta(consulta);
+              AccesoDatos.ejectutarAccion();
+            }
+            catch (Exception ex)
+            {
+                    throw ex;
+            }
+            finally
+            {
+                AccesoDatos.cerrarConexion();
+            }
         }
     }
 }

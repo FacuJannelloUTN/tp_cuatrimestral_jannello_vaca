@@ -12,38 +12,51 @@ namespace tp_cuatrimestral_jannello_vaca
 {
     public partial class AdmProductos : System.Web.UI.Page
     {
-        public List<Producto> allProductos { get; set; }
-        public List<Categoria> allCategorias { get; set; }
-        public List<Marca> allMarcas { get; set; }
         public Producto selectedProducto { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
             this.updateTablaProductos();
-            this.agregarMarcasADropdown();
-            this.agregarCategoriasADropdown();
-            selectedProducto = allProductos[0];
-            this.updateDataSelectedProducto();
+            this.updateDropdownProductos();
+            this.updateDropdownMarcas();
+            this.updateDropdownCategorias();
+            }
         }
+
         private void updateTablaProductos()
         {
             ProductoNegocio prodNegocio = new ProductoNegocio();
-            allProductos = prodNegocio.listar("");
-            TablaProductos.DataSource = allProductos;
+            List<Producto> allProductos = prodNegocio.listar("");
+            Session.Add("allProductos", allProductos);
+            TablaProductos.DataSource = (List<Producto>)Session["allProductos"];
             TablaProductos.DataBind();
         }
-        private void agregarCategoriasADropdown()
+        private void updateDropdownProductos()
         {
+
+            ProductoNegocio prodNegocio = new ProductoNegocio();
+            List<Producto> allProductos = prodNegocio.listar("");
+            Session.Add("allProductos", allProductos);
+            DDSelectionProduct.DataSource = (List<Producto>)Session["allProductos"];
+            DDSelectionProduct.DataBind();
+        }
+        private void updateDropdownCategorias()
+        {
+
             CategoriaNegocio catNegocio = new CategoriaNegocio();
-            allCategorias = catNegocio.listar("");
-            DropDownListCategorias.DataSource = allCategorias;
+            List<Categoria> allCategorias = catNegocio.listar("");
+            Session.Add("allCategorias", allCategorias);
+            DropDownListCategorias.DataSource = (List<Categoria>)Session["allCategorias"];
             DropDownListCategorias.DataBind();
 
         }
-        private void agregarMarcasADropdown()
+        private void updateDropdownMarcas()
         {
             MarcaNegocio marcaNegocio = new MarcaNegocio();
-            allMarcas = marcaNegocio.listar("");
-            DropDownListMarcas.DataSource = allMarcas;
+            List<Marca> allMarcas = marcaNegocio.listar("");
+            Session.Add("allMarcas", allMarcas);
+            DropDownListMarcas.DataSource = (List<Marca>)Session["allMarcas"];
             DropDownListMarcas.DataBind();
 
         }
@@ -54,9 +67,95 @@ namespace tp_cuatrimestral_jannello_vaca
             TextBoxDescripcionProducto.Text = selectedProducto.Descripcion;
             TextBoxURLImagen.Text = selectedProducto.URLimagen;
             TextBoxCodigoProducto.Text = selectedProducto.CodigoArticulo;
-            DropDownListCategorias.SelectedValue = allCategorias.Find(x => x.Id == selectedProducto.Categoria.Id).ToString();
-            DropDownListMarcas.SelectedValue = allMarcas.Find(x => x.Id == selectedProducto.Marca.Id).ToString();
+            TextBoxPrecio.Text = selectedProducto.Precio.ToString();
+            TextBoxStock.Text = selectedProducto.Stock.ToString();
+            DropDownListCategorias.SelectedValue = ((List<Categoria>)Session["allCategorias"]).Find(x => x.Id == selectedProducto.Categoria.Id).Id.ToString();
+            DropDownListMarcas.SelectedValue = ((List<Marca>)Session["allMarcas"]).Find(x => x.Id == selectedProducto.Marca.Id).Id.ToString();
         }
 
+        protected void DDSelectionProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            long id = long.Parse(DDSelectionProduct.SelectedItem.Value);
+            selectedProducto = ((List<Producto>)Session["allProductos"]).Find(p => p.Id == id);
+            this.updateDataSelectedProducto();
+            Session.Add("selectedProducto", selectedProducto);
+            PanelSelectedProducto.Visible = true;
+        }
+
+        protected void TextBoxCodigoProducto_TextChanged(object sender, EventArgs e)
+        {
+            Producto prod = (Producto)Session["selectedProducto"];
+            prod.CodigoArticulo = TextBoxCodigoProducto.Text;
+            ProductoNegocio prodNeg = new ProductoNegocio();
+            prodNeg.actualizar(prod);
+            this.updateTablaProductos();
+        }
+
+        protected void TextBoxDescripcionProducto_TextChanged(object sender, EventArgs e)
+        {
+            Producto prod = (Producto)Session["selectedProducto"];
+            prod.Descripcion = TextBoxDescripcionProducto.Text;
+            ProductoNegocio prodNeg = new ProductoNegocio();
+            prodNeg.actualizar(prod);
+            this.updateTablaProductos();
+        }
+
+        protected void TextBoxNombreProducto_TextChanged(object sender, EventArgs e)
+        {
+            Producto prod = (Producto)Session["selectedProducto"];
+            prod.Nombre = TextBoxNombreProducto.Text;
+            ProductoNegocio prodNeg = new ProductoNegocio();
+            prodNeg.actualizar(prod);
+            this.updateTablaProductos();
+        }
+
+        protected void TextBoxStock_TextChanged(object sender, EventArgs e)
+        {
+            Producto prod = (Producto)Session["selectedProducto"];
+            prod.Stock = long.Parse(TextBoxStock.Text);
+            ProductoNegocio prodNeg = new ProductoNegocio();
+            prodNeg.actualizar(prod);
+            this.updateTablaProductos();
+        }
+
+        protected void DropDownListMarcas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            long id = long.Parse(DropDownListMarcas.SelectedItem.Value);
+            Marca marca = ((List<Marca>)Session["allMarcas"]).Find(m => m.Id == id);
+            Producto prod = (Producto)Session["selectedProducto"];
+            prod.Marca = marca;
+            ProductoNegocio prodNeg = new ProductoNegocio();
+            prodNeg.actualizar(prod);
+            this.updateTablaProductos();
+        }
+
+        protected void DropDownListCategorias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            long id = long.Parse(DropDownListCategorias.SelectedItem.Value);
+            Categoria categoria = ((List<Categoria>)Session["allCategorias"]).Find(m => m.Id == id);
+            Producto prod = (Producto)Session["selectedProducto"];
+            prod.Categoria = categoria;
+            ProductoNegocio prodNeg = new ProductoNegocio();
+            prodNeg.actualizar(prod);
+            this.updateTablaProductos();
+        }
+
+        protected void TextBoxURLImagen_TextChanged(object sender, EventArgs e)
+        {
+            Producto prod = (Producto)Session["selectedProducto"];
+            prod.URLimagen = TextBoxURLImagen.Text;
+            ProductoNegocio prodNeg = new ProductoNegocio();
+            prodNeg.actualizar(prod);
+            this.updateTablaProductos();
+        }
+
+        protected void TextBoxPrecio_TextChanged(object sender, EventArgs e)
+        {
+            Producto prod = (Producto)Session["selectedProducto"];
+            prod.Precio = decimal.Parse(TextBoxPrecio.Text);
+            ProductoNegocio prodNeg = new ProductoNegocio();
+            prodNeg.actualizar(prod);
+            this.updateTablaProductos();
+        }
     }
 }
