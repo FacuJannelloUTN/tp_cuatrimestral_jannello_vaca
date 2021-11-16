@@ -74,6 +74,7 @@ insert into TiposDeUsuarios(nombre)
 values ('Admin'), ('Cliente')
 insert into Productos(precio, nombre, descripcion, codArticulo, URLimagen, idCategoria, idMarca, stock, estado)
 values 
+(50000, 'Smart TV', 'Una tele para toda la familia', 'TVG20231', 'https://http2.mlstatic.com/D_NQ_NP_682817-MLA47690303593_092021-O.webp', 1, 5, 80, 1),
 (22000, 'MotoG30', 'Un celular que te hará vibrar de la emoción', 'CD220815', 'https://www.naldo.com.ar/medias/405422.jpg-515Wx515H?context=bWFzdGVyfHJvb3R8MTYxMzN8aW1hZ2UvanBlZ3xoNzAvaGEzLzk1ODgwNzEwMzkwMDYuanBnfGM2NWYwMzRhMzI0NzU0NWEwYjEwNjhjNDEwM2FlMjFmNGEzOTkzNWVhNzc0NDZhNmI0ZDNkMmJhNjZiNGI4YTY', 2, 4, 50, 1)
 insert into Descuentos(codigo, porcentaje)
 values
