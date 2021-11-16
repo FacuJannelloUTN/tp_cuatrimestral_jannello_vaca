@@ -63,14 +63,20 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" runat="server" href="~/AdmMarcas">
-                            <i class="fa fa-shopping-bag"></i> Marcas
+                            <i class="fa fa-shopping-bag"></i> Administrar Marcas
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" runat="server" href="~/AdmCategorias">
-                            <i class="fa fa-shopping-bag"></i> Categorías
+                            <i class="fa fa-shopping-bag"></i> Administrar Categorías
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" runat="server" href="~/AdmProductos">
+                            <i class="fa fa-shopping-bag"></i> Administrar Productos
+                        </a>
+                    </li>
+
                  </ul>
             </div>
             <div>
@@ -79,7 +85,7 @@
 
             </div>
         </nav>
-        <main class="container body-content">
+        <main class="body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>   
         </main>

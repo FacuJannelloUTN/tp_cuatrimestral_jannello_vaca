@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdmMarcas.aspx.cs" Inherits="tp_cuatrimestral_jannello_vaca.AdmMarcas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 class="mb-5"> Administrar Marcas </h2>
+    <h2 class="mb-5 ml-5"> Administrar Marcas </h2>
     <div class="d-flex justify-content-around mt-3">
         <asp:Table
             ID="TablaMarcas"
