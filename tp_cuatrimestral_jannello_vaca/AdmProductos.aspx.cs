@@ -72,36 +72,28 @@ namespace tp_cuatrimestral_jannello_vaca
         {
             Producto prod = (Producto)Session["selectedProducto"];
             prod.CodigoArticulo = TextBoxCodigoProducto.Text;
-            ProductoNegocio prodNeg = new ProductoNegocio();
-            prodNeg.actualizar(prod);
-            this.updateTablaProductos();
+            Session.Add("selectedProducto", prod);
         }
 
         protected void TextBoxDescripcionProducto_TextChanged(object sender, EventArgs e)
         {
             Producto prod = (Producto)Session["selectedProducto"];
             prod.Descripcion = TextBoxDescripcionProducto.Text;
-            ProductoNegocio prodNeg = new ProductoNegocio();
-            prodNeg.actualizar(prod);
-            this.updateTablaProductos();
+            Session.Add("selectedProducto", prod);
         }
 
         protected void TextBoxNombreProducto_TextChanged(object sender, EventArgs e)
         {
             Producto prod = (Producto)Session["selectedProducto"];
             prod.Nombre = TextBoxNombreProducto.Text;
-            ProductoNegocio prodNeg = new ProductoNegocio();
-            prodNeg.actualizar(prod);
-            this.updateTablaProductos();
+            Session.Add("selectedProducto", prod);
         }
 
         protected void TextBoxStock_TextChanged(object sender, EventArgs e)
         {
             Producto prod = (Producto)Session["selectedProducto"];
             prod.Stock = long.Parse(TextBoxStock.Text);
-            ProductoNegocio prodNeg = new ProductoNegocio();
-            prodNeg.actualizar(prod);
-            this.updateTablaProductos();
+            Session.Add("selectedProducto", prod);
         }
 
         protected void DropDownListMarcas_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,9 +102,7 @@ namespace tp_cuatrimestral_jannello_vaca
             Marca marca = ((List<Marca>)Session["allMarcas"]).Find(m => m.Id == id);
             Producto prod = (Producto)Session["selectedProducto"];
             prod.Marca = marca;
-            ProductoNegocio prodNeg = new ProductoNegocio();
-            prodNeg.actualizar(prod);
-            this.updateTablaProductos();
+            Session.Add("selectedProducto", prod);
         }
 
         protected void DropDownListCategorias_SelectedIndexChanged(object sender, EventArgs e)
@@ -121,28 +111,22 @@ namespace tp_cuatrimestral_jannello_vaca
             Categoria categoria = ((List<Categoria>)Session["allCategorias"]).Find(m => m.Id == id);
             Producto prod = (Producto)Session["selectedProducto"];
             prod.Categoria = categoria;
-            ProductoNegocio prodNeg = new ProductoNegocio();
-            prodNeg.actualizar(prod);
-            this.updateTablaProductos();
+            Session.Add("selectedProducto", prod);
         }
 
         protected void TextBoxURLImagen_TextChanged(object sender, EventArgs e)
         {
             Producto prod = (Producto)Session["selectedProducto"];
             prod.URLimagen = TextBoxURLImagen.Text;
-            ProductoNegocio prodNeg = new ProductoNegocio();
-            prodNeg.actualizar(prod);
+            Session.Add("selectedProducto", prod);
             ImageProducto.ImageUrl = prod.URLimagen;
-            this.updateTablaProductos();
         }
 
         protected void TextBoxPrecio_TextChanged(object sender, EventArgs e)
         {
             Producto prod = (Producto)Session["selectedProducto"];
             prod.Precio = decimal.Parse(TextBoxPrecio.Text);
-            ProductoNegocio prodNeg = new ProductoNegocio();
-            prodNeg.actualizar(prod);
-            this.updateTablaProductos();
+            Session.Add("selectedProducto", prod);
         }
 
         protected void ButtonCrear_Click(object sender, EventArgs e)
@@ -230,6 +214,9 @@ namespace tp_cuatrimestral_jannello_vaca
 
         protected void ButtonConfirmarCreacion_Click(object sender, EventArgs e)
         {
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
             ProductoNegocio prodNeg = new ProductoNegocio();
             prodNeg.crearNuevo((Producto)Session["productoCreacion"]);
             this.updateTablaProductos();
@@ -274,6 +261,18 @@ namespace tp_cuatrimestral_jannello_vaca
             Session.Add("selectedProducto", selectedProducto);
             PanelSelectedProducto.Visible = true;
             PanelCreacionProducto.Visible = false;
+        }
+
+        protected void ButtonGuardarCambios_Click(object sender, EventArgs e)
+        {
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
+            Producto prod = (Producto)Session["selectedProducto"];
+            ProductoNegocio prodNeg = new ProductoNegocio();
+            prodNeg.actualizar(prod);
+            this.updateTablaProductos();
+
         }
     }
 }
