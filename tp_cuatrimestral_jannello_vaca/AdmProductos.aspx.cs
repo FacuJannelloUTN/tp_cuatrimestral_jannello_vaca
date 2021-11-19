@@ -18,7 +18,6 @@ namespace tp_cuatrimestral_jannello_vaca
             if (!IsPostBack)
             {
             this.updateTablaProductos();
-            this.updateDropdownProductos();
             this.updateDropdownMarcas();
             this.updateDropdownCategorias();
             this.setearProductoVacioEnSession();
@@ -32,15 +31,6 @@ namespace tp_cuatrimestral_jannello_vaca
             Session.Add("allProductos", allProductos);
             TablaProductos.DataSource = (List<Producto>)Session["allProductos"];
             TablaProductos.DataBind();
-        }
-        private void updateDropdownProductos()
-        {
-
-            ProductoNegocio prodNegocio = new ProductoNegocio();
-            List<Producto> allProductos = prodNegocio.listar("");
-            Session.Add("allProductos", allProductos);
-            DDSelectionProduct.DataSource = (List<Producto>)Session["allProductos"];
-            DDSelectionProduct.DataBind();
         }
         private void updateDropdownCategorias()
         {
@@ -77,14 +67,6 @@ namespace tp_cuatrimestral_jannello_vaca
             DropDownListMarcas.SelectedValue = ((List<Marca>)Session["allMarcas"]).Find(x => x.Id == selectedProducto.Marca.Id).Id.ToString();
         }
 
-        protected void DDSelectionProduct_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            long id = long.Parse(DDSelectionProduct.SelectedItem.Value);
-            selectedProducto = ((List<Producto>)Session["allProductos"]).Find(p => p.Id == id);
-            this.updateDataSelectedProducto();
-            Session.Add("selectedProducto", selectedProducto);
-            PanelSelectedProducto.Visible = true;
-        }
 
         protected void TextBoxCodigoProducto_TextChanged(object sender, EventArgs e)
         {
@@ -150,6 +132,7 @@ namespace tp_cuatrimestral_jannello_vaca
             prod.URLimagen = TextBoxURLImagen.Text;
             ProductoNegocio prodNeg = new ProductoNegocio();
             prodNeg.actualizar(prod);
+            ImageProducto.ImageUrl = prod.URLimagen;
             this.updateTablaProductos();
         }
 
@@ -165,6 +148,7 @@ namespace tp_cuatrimestral_jannello_vaca
         protected void ButtonCrear_Click(object sender, EventArgs e)
         {
             PanelCreacionProducto.Visible = true;
+            PanelSelectedProducto.Visible = false;
         }
 
         protected void ButtonCancelarCreacion_Click(object sender, EventArgs e)
@@ -214,6 +198,7 @@ namespace tp_cuatrimestral_jannello_vaca
             prod = (Producto)Session["productoCreacion"];
             prod.URLimagen = TextBoxURLImagenCreacion.Text;
             Session.Add("productoCreacion", prod);
+            ImageCreacion.ImageUrl = prod.URLimagen;
         }
 
         protected void TextBoxPrecioCreacion_TextChanged(object sender, EventArgs e)
@@ -279,6 +264,16 @@ namespace tp_cuatrimestral_jannello_vaca
             Producto prod = (Producto)Session["selectedProducto"];
             prodNeg.eliminarConBajaLogica(prod.Id);
             Page.Response.Redirect(Page.Request.Url.ToString(), true);
+        }
+
+        protected void ButtonVerDetalle_Click(object sender, EventArgs e)
+        {
+            long id = long.Parse(((Button)sender).CommandArgument);
+            selectedProducto = ((List<Producto>)Session["allProductos"]).Find(p => p.Id == id);
+            this.updateDataSelectedProducto();
+            Session.Add("selectedProducto", selectedProducto);
+            PanelSelectedProducto.Visible = true;
+            PanelCreacionProducto.Visible = false;
         }
     }
 }
