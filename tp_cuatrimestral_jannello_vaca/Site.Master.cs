@@ -16,7 +16,7 @@ namespace tp_cuatrimestral_jannello_vaca
 
         protected void utnLogo_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("/", false);
+            //Response.Redirect("/", false);
         }
     }
 }

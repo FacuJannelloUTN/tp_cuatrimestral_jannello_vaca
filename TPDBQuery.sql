@@ -1,3 +1,7 @@
+use master
+go
+Drop database TPFinalPrograIII;
+
 create database TPFinalPrograIII 
 go
 use TPFinalPrograIII
@@ -80,3 +84,9 @@ insert into Descuentos(codigo, porcentaje)
 values
 ('SUPER50', 50),
 ('OPEN25', 25)
+
+insert into Usuarios values 
+('alanVaca', '12345678', 'alan-gabriel@hotmail.com', 1),
+('alanVacaCliente', '12345678', 'alanVacaCliente@hotmail.com', 2),
+('facuJanello', '12345678', 'facundojannellobaldi@gmail.com@hotmail.com', 1),
+('facuJanelloCliente', '12345678', 'facuJanelloCliente@hotmail.com', 2)

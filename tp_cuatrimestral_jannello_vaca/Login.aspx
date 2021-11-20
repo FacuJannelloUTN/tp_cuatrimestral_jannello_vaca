@@ -9,25 +9,19 @@
           alt="Logo computadora">
       </div>
       <div>
-          <form class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <div class="form-outline mb-4">
-                <input type="text" id="usuario-input" class="form-control form-control-md"
-                  placeholder="Ingrese el nombre de usuario" />
-                <label class="form-label" for="usuario-input">Nombre de usuario</label>
+                <label class="form-label" for="usuario-input">Email</label>
+                  <asp:TextBox TextMode="Email" ID="mail" CssClass="form-control form-control-md" placeholder="Ingrese email" OnTextChanged="OnFocusCamposVacios" runat="server" />    
               </div>
               <div class="form-outline mb-3">
-                <input type="password" id="contrasena-input" class="form-control form-control-md"
-                  placeholder="Contraseña" />
                 <label class="form-label" for="contrasena-input">Contraseña</label>
+                  <asp:TextBox TextMode="Password" ID="contrasena" CssClass="form-control form-control-md" placeholder="Ingrese contraseña" AutoPostBack="false" OnTextChanged="OnFocusCamposVacios" runat="server" />    
               </div>
-
               <div class="text-center text-lg-start mt-4 pt-2">
-                <button type="button" class="btn btn-primary btn-md"
-                  style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                  <asp:Button Text="Login" ID="login"  runat="server" CssClass="btn btn-primary btn-md" OnClick="ingreso"/>
                 <span class="small fw-bold mt-2 pt-1 mb-0">¿No tenés usuario? <a href="#!"
                     class="link-danger">Registrarse</a></span>
               </div>
-            </form>
         </div>
       </div>
   </div>
