@@ -4,15 +4,15 @@
         
 
     BUSCAR:&nbsp
-    <asp:TextBox ID="products_buscar" runat="server" CssClass="drop" width="25%" AutoPostBack="true" OnTextChanged="products_buscar_TextChanged"></asp:TextBox>
+    <asp:TextBox ID="products_buscar" runat="server" CssClass="drop" width="25%" AutoPostBack="false" OnTextChanged="products_buscar_TextChanged"></asp:TextBox>
     CATEGORIA:&nbsp
-    <asp:DropDownList ID="products_categorias" runat="server" CssClass="drop" AutoPostBack="false" width="10%"></asp:DropDownList>
+    <asp:DropDownList ID="products_categorias" runat="server" CssClass="drop" AutoPostBack="true" width="10%" OnSelectedIndexChanged="products_buscar_TextChanged"></asp:DropDownList>
     MARCA:&nbsp
-    <asp:DropDownList ID="products_marca" runat="server" CssClass="drop" AutoPostBack="false" width="10%"></asp:DropDownList>
+    <asp:DropDownList ID="products_marca" runat="server" CssClass="drop" AutoPostBack="true" width="10%" OnSelectedIndexChanged="products_buscar_TextChanged"></asp:DropDownList>
     PRECIO: &nbsp
-    <asp:TextBox ID="products_precioMinimo" placeholder="Mínimo" runat="server" CssClass="drop" AutoPostBack="true" width="5%" text-align="center"></asp:TextBox>
+    <asp:TextBox ID="products_precioMinimo" placeholder="Mínimo" runat="server" CssClass="drop" AutoPostBack="false" width="5%" text-align="center" OnTextChanged="products_buscar_TextChanged"></asp:TextBox>
     &nbsp
-    <asp:TextBox ID="products_precioMaximo" placeholder="Máximo" runat="server" CssClass="drop" AutoPostBack="true" width="5%" text-align="center"></asp:TextBox>
+    <asp:TextBox ID="products_precioMaximo" placeholder="Máximo" runat="server" CssClass="drop" AutoPostBack="false" width="5%" text-align="center" OnTextChanged="products_buscar_TextChanged"></asp:TextBox>
 
 </div>
 <div class="container">

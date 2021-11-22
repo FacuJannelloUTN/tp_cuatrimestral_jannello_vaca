@@ -14,11 +14,16 @@ namespace tp_cuatrimestral_jannello_vaca
         public List<Producto> allProductos;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
 
                 ProductoNegocio productoNegocio = new ProductoNegocio();
                 CategoriaNegocio CategoriaNegocio = new CategoriaNegocio();
                 MarcaNegocio MarcaNegocio = new MarcaNegocio();
+
                 allProductos = productoNegocio.listar("");
+                Session["Catalogo"] = allProductos;
+
 
                 products_categorias.Items.Clear();
                 products_categorias.Items.Add("Todos");
@@ -33,12 +38,54 @@ namespace tp_cuatrimestral_jannello_vaca
                 {
                     products_marca.Items.Add(item.Descripcion);
                 }
+            }
+            allProductos = ((List<Producto>)Session["Catalogo"]);
         }
 
         protected void products_buscar_TextChanged(object sender, EventArgs e)
         {
             ProductoNegocio productoNegocio = new ProductoNegocio();
-            allProductos = productoNegocio.listar($"and P.nombre like '{products_buscar.Text}'");
+            //allProductos = productoNegocio.listar($"and P.nombre like '%{products_buscar.Text}%'");
+            string NombreProd    = products_buscar.Text;
+            string CategoriaProd = products_categorias.SelectedValue;
+            string MarcaProducto = products_marca.SelectedValue;
+            string mininoProd    = products_precioMinimo.Text;
+            string maximoProd    = products_precioMaximo.Text;
+
+            string consulta = "";
+
+
+            if(NombreProd != "")
+            {
+                consulta += " and P.nombre like '%" + NombreProd + "%'";
+            }
+            if (CategoriaProd != "Todos")
+            {
+                consulta += " and C.nombre = '" + CategoriaProd + "'";
+            }
+            if (MarcaProducto != "Todos")
+            {
+                consulta += " and M.nombre = '" + MarcaProducto + "'";
+            }
+            if (mininoProd != "" && maximoProd != "")
+            {
+                consulta += " and P.Precio between " + mininoProd + " and " + maximoProd;
+            }
+            else if (mininoProd != "")
+            {
+                consulta += " and P.Precio >= " + mininoProd;
+            }
+            else if (maximoProd != "")
+            {
+                consulta += " and P.Precio <= " + maximoProd;
+            }
+
+            if(productoNegocio.listar(consulta).Count() > 0)
+            {
+                Session["Catalogo"] = productoNegocio.listar(consulta);
+                allProductos = ((List<Producto>)Session["Catalogo"]);
+            }
+
             return;
 
         }
