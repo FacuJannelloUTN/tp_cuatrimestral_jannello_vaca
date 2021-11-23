@@ -1,6 +1,6 @@
 use master
 go
-Drop database TPFinalPrograIII;
+Drop database TPFinalPrograIII
 
 create database TPFinalPrograIII 
 go
@@ -35,7 +35,7 @@ create table TiposDeUsuarios(
 )
 go
 create Table Usuarios (
-   id bigint not null primary key identity(100,1),
+   id bigint not null primary key identity(1,1),
    nombre varchar(30) null unique,
    contrasenia varchar(30) null,
    mail varchar(60) not null unique,
@@ -49,24 +49,13 @@ create Table Carritos (
   idComprador bigint not null foreign key references Usuarios(id),
   conEnvio bit not null,
   finalizado bit not null,
-)
-go
-create Table ProductosEnCarrito (
- idCarrito bigint not null foreign key references Carritos(id),
- idProducto bigint not null foreign key references Productos(id),
- precioDeVenta money not null,
- cantidad int not null
+  entregado bit not null,
+  monto money not null, 
 )
 go
 create Table Descuentos (
  codigo varchar(200) not null unique,
  porcentaje decimal not null
-)
-go
-create Table Pedidos (
- idCarrito bigint not null foreign key references Carritos(id),
- entregado bit not null,
- ganancia money not null
 )
 go
 insert into CategoriasProductos(nombre)

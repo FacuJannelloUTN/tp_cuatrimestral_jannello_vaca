@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <section class="container">
   <div class="row">
-    <div class="col-lg-8">
-        <div>
+   <asp:Panel runat="server" CssClass="col-lg-8" ID="Step1" Visible="true">
+     <div>
           <h5 class="mb-4">Productos en Carrito (<span><%= Carrito.Productos.Count.ToString() %></span> productos)</h5>
           <% 
               List<long> productosMostrados = new List<long>();
@@ -62,7 +62,21 @@
             <% }
             } %>
          </div>
-   </div>
+   </asp:Panel>
+   <asp:Panel runat="server" CssClass="col-lg-8" ID="Step2" Visible="false">
+      <div class="form-outline mb-4">
+         <label class="form-label" for="usuario-input">Email</label>
+         <asp:TextBox TextMode="Email" ID="TextBoxMailCliente" CssClass="form-control form-control-md" placeholder="Ingrese email" runat="server" />    
+      </div>
+      <div class="form-outline mb-3">
+         <label class="form-label" for="contrasena-input">Contraseña</label>
+         <asp:TextBox ID="TextBoxNombreCliente" CssClass="form-control form-control-md" placeholder="Ingrese su nombre" AutoPostBack="false" runat="server" />    
+      </div>
+      <div class="text-center text-lg-start mt-4 pt-2">
+         <asp:Button Text="Confirmar envío" ID="ButtonConfirmar"  runat="server" CssClass="btn btn-primary btn-md"/>
+         <asp:Button Text="Volver" ID="ButtonVolver"  runat="server" CssClass="btn btn-primary btn-md"/> 
+      </div>   
+   </asp:Panel>
    <div class="col-lg-4">
 
       <div class="mb-3">
@@ -89,7 +103,7 @@
                       </span>
                   </li>
               </ul>
-              <button type="button" class="btn btn-primary btn-block">Realizar pedido</button>
+              <asp:Button  runat="server" ID="ButtonAvanzar" CssClass="btn btn-primary btn-block" OnClick="ButtonAvanzar_Click" Text="Avanzar"></asp:Button>
           </div>
       </div>
 

@@ -84,5 +84,13 @@ namespace tp_cuatrimestral_jannello_vaca
             Carrito.Descuento.Porcentaje = descuento;
             Session.Add("Carrito", Carrito);
         }
+
+        protected void ButtonAvanzar_Click(object sender, EventArgs e)
+        {
+            
+            Step1.Visible = false;
+            Step2.Visible = true;
+            ButtonAvanzar.Visible = false;
+        }
     }
 }
