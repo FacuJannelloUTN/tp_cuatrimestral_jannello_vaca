@@ -9,9 +9,9 @@ namespace dominio
     public class Carrito
     {
         public int Id { get; set; } 
-        public List<ProductoEnCarrito> Productos { get; set; }
+        public List<Producto> Productos { get; set; }
         public string CodCompra { get; set; }
-        public string CodDescuento { get; set; }    
+        public Descuento Descuento { get; set; }    
         public Usuario Comprador { get; set; }
         public bool ConEnvio { get; set; }
         public bool Finalizado { get; set; }

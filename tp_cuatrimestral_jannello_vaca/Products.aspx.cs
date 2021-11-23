@@ -38,6 +38,25 @@ namespace tp_cuatrimestral_jannello_vaca
                 {
                     products_marca.Items.Add(item.Descripcion);
                 }
+
+                if (Request.QueryString["producto"] != null)
+                {
+                    Carrito carrito = new Func<Carrito>(() => {
+                        return Session["Carrito"] != null
+                            ? (Carrito)Session["Carrito"]
+                            : new Carrito();
+                    })();
+                    if (carrito.Productos != null)
+                    {
+                       carrito.Productos.Add(allProductos.Find(x => x.Id == long.Parse(Request.QueryString["producto"])));
+                    }
+                    else
+                    {
+                        carrito.Productos = new List<Producto>();
+                        carrito.Productos.Add(allProductos.Find(x => x.Id == long.Parse(Request.QueryString["producto"])));
+                    }
+                    Session.Add("Carrito", carrito);
+                }
             }
             allProductos = ((List<Producto>)Session["Catalogo"]);
         }
@@ -89,5 +108,6 @@ namespace tp_cuatrimestral_jannello_vaca
             return;
 
         }
+
     }
 }

@@ -5,22 +5,70 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using negocio;
+using dominio;
 
 namespace tp_cuatrimestral_jannello_vaca
 {
     public partial class ShoppingCart : System.Web.UI.Page
     {
         public decimal Descuento { get; set; }
+        public Carrito Carrito { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Descuento = 0;
+            if (!IsPostBack) {
+                this.Descuento = 0;
+                if (Session["Carrito"] != null)
+                {
+                    Carrito carrito = (Carrito)Session["Carrito"];
+                    carrito.Descuento = new Descuento();
+                    carrito.Descuento.Porcentaje = 0;
+                    carrito.Descuento.Codigo = "";
+                }        
+            }
+            Carrito = new Func<Carrito>(() => {
+              Carrito carritoVacio = new Carrito();
+              carritoVacio.Productos = new List<Producto>();
+              carritoVacio.Descuento = new Descuento();
+              carritoVacio.Descuento.Porcentaje = 0;
+              carritoVacio.Descuento.Codigo = "";
+              return Session["Carrito"] != null
+                ? (Carrito)Session["Carrito"]
+                : carritoVacio;
+            })();
+            Descuento = new Func<decimal>(() => {
+                return Session["DescuentoActivo"] != null
+                  ? (decimal)Session["DescuentoActivo"]
+                  : 0;
+            })();
+            if (Request.QueryString["reducir"] != null)
+            {
+                Carrito cart = (Carrito)Session["Carrito"];
+                Producto productoARemover = cart.Productos.Find(x => x.Id == long.Parse(Request.QueryString["reducir"]));
+                cart.Productos.Remove(productoARemover);
+                Session.Add("Carrito", cart);
+            }
+            if (Request.QueryString["aumentar"] != null)
+            {
+                Carrito cart = (Carrito)Session["Carrito"];
+                Producto productoARemover = cart.Productos.Find(x => x.Id == long.Parse(Request.QueryString["aumentar"]));
+                cart.Productos.Add(productoARemover);
+                Session.Add("Carrito", cart);
+            }
+            if (Request.QueryString["reducirTodo"] != null)
+            {
+                Carrito cart = (Carrito)Session["Carrito"];
+                cart.Productos.RemoveAll(x => x.Id == long.Parse(Request.QueryString["reducirTodo"]));
+                Session.Add("Carrito", cart);
+            }
         }
 
         protected void ButtonSubmitCodigo_Click(object sender, EventArgs e)
         {
             DescuentoNegocio descuentoNegocio = new DescuentoNegocio();
-            this.Descuento = descuentoNegocio.buscarPorCodigo(TextBoxCodigoDescuento.Text);
-            if (this.Descuento == 0)
+            decimal descuento = descuentoNegocio.buscarPorCodigo(TextBoxCodigoDescuento.Text);
+            Session.Add("DescuentoActivo", descuento);
+            Descuento = descuento;
+            if (descuento == 0)
             {
                 LabelMensajeRespuestaCodigo.CssClass = "text-danger";
                 LabelMensajeRespuestaCodigo.Text = "El código no existe";
@@ -29,7 +77,11 @@ namespace tp_cuatrimestral_jannello_vaca
             {
                 LabelMensajeRespuestaCodigo.CssClass = "text-success";
                 LabelMensajeRespuestaCodigo.Text = "Código aprobado";
-                LabelDescuento.Text = $"{this.Descuento}%";
+                Carrito.Descuento = new Descuento();
+                Carrito.Descuento.Codigo = TextBoxCodigoDescuento.Text;
+                Carrito.Descuento.Porcentaje = descuento;
+                Session.Add("Carrito", Carrito);
+
             }
 
         }

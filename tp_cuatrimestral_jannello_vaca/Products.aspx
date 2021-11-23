@@ -40,9 +40,9 @@
                 </ul>
                 </div>
                 <div class="container-fluid">
-                    <button class="btn btn-outline-primary btn-block">
-                    Agregar al carrito 
-                    <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                    <button class="btn btn-outline-primary btn-block" onclick="agregarProducto(<%= producto.Id %>)">
+                        Agregar al carrito
+                        <i class="fa fa-shopping-basket"></i>
                     </button>
                 </div>
             </div>
@@ -51,7 +51,19 @@
     <% }%>
   </div>
 </div>
-
+<script>
+    function agregarProducto(id) {
+        var url = window.location.href
+        console.log(url)
+        if (url.indexOf('?') > -1) {
+            url = url.substr(0,url.indexOf('?'))
+            url += `?producto=${id}`
+        } else {
+            url += `?producto=${id}`
+        }
+        window.location.href = url
+    }
+</script>
             </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

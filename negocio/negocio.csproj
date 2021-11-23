@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="CategoriaNegocio.cs" />
-    <Compile Include="CuponDescuentoNegocio.cs" />
+    <Compile Include="DescuentoNegocio.cs" />
     <Compile Include="MarcaNegocio.cs" />
     <Compile Include="LoginUsuarios.cs" />
     <Compile Include="ProductoNegocio.cs" />

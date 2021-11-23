@@ -15,24 +15,6 @@ namespace tp_cuatrimestral_jannello_vaca
     {
 
         /// <summary>
-        /// quantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox quantity;
-
-        /// <summary>
-        /// LabelDescuento control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelDescuento;
-
-        /// <summary>
         /// TextBoxCodigoDescuento control.
         /// </summary>
         /// <remarks>

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace dominio
 {
-    public class ProductoEnCarrito
+    public class Descuento
     {
-        public decimal precioDeVenta { get; set; }
-        public int cantidad { get; set;  }
+        public string Codigo {get; set; }
+        public decimal Porcentaje { get; set; }
     }
 }
