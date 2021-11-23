@@ -95,15 +95,12 @@
 
       <div class="mb-3">
         <div class="pt-4">
-            <a class="d-flex justify-content-between" data-toggle="collapse" href="#box-descuento"
-                aria-expanded="false" aria-controls="box-descuento">
-                    Agregar código de descuento (opcional)
-            </a>
-            <div class="collapse" id="box-descuento">
+            <label>Agregar código de descuento (opcional)</label>
+            <div>
                 <div class="mt-3">
                     <div class="md-form md-outline mb-0">
-                        <asp:TextBox ID="TextBoxCodigoDescuento" runat="server" CssClass="form-control font-weight-light col-10" Text="" placeholder="Ingrese código de descuento"></asp:TextBox>
-                        <div class="input-group-append">
+                        <asp:TextBox ID="TextBoxCodigoDescuento" runat="server" CssClass="form-control font-weight-light col-12" Text="" placeholder="Ingrese código de descuento"></asp:TextBox>
+                        <div class="input-group-append d-flex align-items-center justify-content-around col-12">
                                 <asp:Button ID="ButtonSubmitCodigo" runat="server" Text="Ingresar" CssClass="btn btn-outline-primary" OnClick="ButtonSubmitCodigo_Click"/>
                                 <asp:Label ID="LabelMensajeRespuestaCodigo" runat="server" Text=""></asp:Label>
                         </div>

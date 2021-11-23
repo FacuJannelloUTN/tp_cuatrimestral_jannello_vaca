@@ -30,7 +30,7 @@ namespace tp_cuatrimestral_jannello_vaca
                     {
                         Session["UserLog"] = userLog;
 
-                        if (userLog.Tipo == 1)
+                        if (userLog.Tipo == TipoUsuario.EMPLEADO)
                         {
                             Response.Redirect("AdmProductos.aspx");
                         }

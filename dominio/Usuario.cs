@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace dominio
 {
+    public enum TipoUsuario
+    {
+        CLIENTE = 1,
+        EMPLEADO = 2,
+    }
     public class Usuario
     {
         public long Id { get; set; }
         public string Nombre { get; set; }
         public string Contrasena { get; set; }
         public string Mail { get; set; }
-        public long Tipo { get; set; }
+        public TipoUsuario Tipo { get; set; }
 
     }
 }

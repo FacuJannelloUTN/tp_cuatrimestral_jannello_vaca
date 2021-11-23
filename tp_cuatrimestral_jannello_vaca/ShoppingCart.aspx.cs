@@ -72,18 +72,17 @@ namespace tp_cuatrimestral_jannello_vaca
             {
                 LabelMensajeRespuestaCodigo.CssClass = "text-danger";
                 LabelMensajeRespuestaCodigo.Text = "El código no existe";
+
             }
             else
             {
                 LabelMensajeRespuestaCodigo.CssClass = "text-success";
                 LabelMensajeRespuestaCodigo.Text = "Código aprobado";
-                Carrito.Descuento = new Descuento();
-                Carrito.Descuento.Codigo = TextBoxCodigoDescuento.Text;
-                Carrito.Descuento.Porcentaje = descuento;
-                Session.Add("Carrito", Carrito);
-
             }
-
+            Carrito.Descuento = new Descuento();
+            Carrito.Descuento.Codigo = TextBoxCodigoDescuento.Text;
+            Carrito.Descuento.Porcentaje = descuento;
+            Session.Add("Carrito", Carrito);
         }
     }
 }
