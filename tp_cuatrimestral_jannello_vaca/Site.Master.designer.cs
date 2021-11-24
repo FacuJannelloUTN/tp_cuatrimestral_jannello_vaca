@@ -15,6 +15,60 @@ namespace tp_cuatrimestral_jannello_vaca
     {
 
         /// <summary>
+        /// PanelLogoUtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelLogoUtn;
+
+        /// <summary>
+        /// PanelMenuParaClientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelMenuParaClientes;
+
+        /// <summary>
+        /// PanelMenuParaEmpleados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelMenuParaEmpleados;
+
+        /// <summary>
+        /// AccesoAPortalEmpleados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel AccesoAPortalEmpleados;
+
+        /// <summary>
+        /// PanelUsuarioLoggeado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelUsuarioLoggeado;
+
+        /// <summary>
+        /// ButtonLogOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonLogOut;
+
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

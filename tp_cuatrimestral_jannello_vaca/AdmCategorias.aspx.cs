@@ -14,11 +14,24 @@ namespace tp_cuatrimestral_jannello_vaca
         public List<Categoria> allCategorias { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.validateUsuarioLoggeado();
             CategoriaNegocio CategoriaNegocio = new CategoriaNegocio();
             allCategorias = CategoriaNegocio.listar("");
             this.updateTablaCategorias();
         }
-
+        private void validateUsuarioLoggeado()
+        {
+            if (Session["UserLog"] == null)
+            {
+                Session.Add("error", "No tienes permiso para ver este contenido");
+                Response.Redirect("Error.aspx", false);
+            }
+            else if (((Usuario)Session["UserLog"]).Tipo != TipoUsuario.EMPLEADO)
+            {
+                Session.Add("error", "No tienes permiso para ver este contenido");
+                Response.Redirect("Error.aspx", false);
+            }
+        }
         private void updateTablaCategorias()
         {
             TablaCategorias.Rows.Clear();

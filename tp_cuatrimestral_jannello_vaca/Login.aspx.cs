@@ -32,6 +32,7 @@ namespace tp_cuatrimestral_jannello_vaca
 
                         if (userLog.Tipo == TipoUsuario.EMPLEADO)
                         {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alertLogin", "alertLogin();", true);
                             Response.Redirect("AdmProductos.aspx");
                         }
                         else

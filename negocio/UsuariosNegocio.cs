@@ -18,10 +18,10 @@ namespace negocio
                 {
 
                     userLog.Id = (long)AccesoDatos.Lector["id"];
-                    userLog.Nombre = AccesoDatos.Lector.GetString(1);
-                    userLog.Contrasena = AccesoDatos.Lector.GetString(2);
-                    userLog.Mail = AccesoDatos.Lector.GetString(3);
-                    userLog.Tipo = (TipoUsuario)AccesoDatos.Lector["idTipoDeUsuario"];
+                    userLog.Nombre = (string)AccesoDatos.Lector["nombre"];
+                    userLog.Contrasena = (string)AccesoDatos.Lector["contrasenia"];
+                    userLog.Mail = (string)AccesoDatos.Lector["mail"];
+                    userLog.Tipo = (long)AccesoDatos.Lector["idTipoDeUsuario"] == 1 ? TipoUsuario.EMPLEADO : TipoUsuario.CLIENTE;
                     respuesta = true;
                 }
             } catch (Exception e)

@@ -36,6 +36,15 @@
             showConfirmButton: false
         })
     }
+    function alertLogin() {
+        Swal.fire({
+            title: '¡Bienvenidx!',
+            text: 'Te loggeaste con éxito',
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false
+        })
+    }
     function alertDatosVacios() {
         
         Swal.fire({
