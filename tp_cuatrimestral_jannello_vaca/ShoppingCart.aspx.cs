@@ -88,9 +88,31 @@ namespace tp_cuatrimestral_jannello_vaca
         protected void ButtonAvanzar_Click(object sender, EventArgs e)
         {
             
+            if (Carrito.Productos.Count == 0)
+            {
+                LabelErrorAlAvanzar.Visible = true;
+                return;
+            }
+            LabelErrorAlAvanzar.Visible = false;
             Step1.Visible = false;
             Step2.Visible = true;
             ButtonAvanzar.Visible = false;
+        }
+
+        protected void CheckBoxConEnvio_CheckedChanged(object sender, EventArgs e)
+        {
+            return;
+        }
+
+        protected void ButtonConfirmar_Click(object sender, EventArgs e)
+        {
+            LabelErrorAlAvanzar.Visible = false;
+            Step1.Visible = false;
+            Step2.Visible = false;
+            PanelCarrito.Visible = false;
+            StepConfirm.Visible = true;
+            ButtonAvanzar.Visible = false;
+            Session.Remove("Carrito");
         }
     }
 }

@@ -53,15 +53,23 @@
 </div>
 <script>
     function agregarProducto(id) {
-        var url = window.location.href
-        console.log(url)
-        if (url.indexOf('?') > -1) {
-            url = url.substr(0,url.indexOf('?'))
-            url += `?producto=${id}`
-        } else {
-            url += `?producto=${id}`
-        }
-        window.location.href = url
+        Swal.fire({
+            title: '¡Producto agregado!',
+            text: 'Podrás verlo en tu carrito',
+            icon:'success',
+            timer: 1500,
+            showConfirmButton: false
+        })
+        setTimeout(function () {
+            var url = window.location.href
+            if (url.indexOf('?') > -1) {
+                url = url.substr(0, url.indexOf('?'))
+                url += `?producto=${id}`
+            } else {
+                url += `?producto=${id}`
+            }
+            window.location.href = url
+        }, 1500);
     }
 </script>
             </ContentTemplate>

@@ -51,6 +51,15 @@ namespace tp_cuatrimestral_jannello_vaca
         protected global::System.Web.UI.WebControls.TextBox TextBoxNombreCliente;
 
         /// <summary>
+        /// CheckBoxConEnvio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBoxConEnvio;
+
+        /// <summary>
         /// ButtonConfirmar control.
         /// </summary>
         /// <remarks>
@@ -69,6 +78,24 @@ namespace tp_cuatrimestral_jannello_vaca
         protected global::System.Web.UI.WebControls.Button ButtonVolver;
 
         /// <summary>
+        /// StepConfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel StepConfirm;
+
+        /// <summary>
+        /// PanelCarrito control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelCarrito;
+
+        /// <summary>
         /// ButtonAvanzar control.
         /// </summary>
         /// <remarks>
@@ -76,6 +103,15 @@ namespace tp_cuatrimestral_jannello_vaca
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonAvanzar;
+
+        /// <summary>
+        /// LabelErrorAlAvanzar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelErrorAlAvanzar;
 
         /// <summary>
         /// TextBoxCodigoDescuento control.

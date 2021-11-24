@@ -65,20 +65,29 @@
    </asp:Panel>
    <asp:Panel runat="server" CssClass="col-lg-8" ID="Step2" Visible="false">
       <div class="form-outline mb-4">
-         <label class="form-label" for="usuario-input">Email</label>
-         <asp:TextBox TextMode="Email" ID="TextBoxMailCliente" CssClass="form-control form-control-md" placeholder="Ingrese email" runat="server" />    
+         <label class="form-label">Email</label>
+         <asp:TextBox TextMode="Email" ID="TextBoxMailCliente" CssClass="form-control form-control-md" placeholder="Ingrese email al que quiere que nos contactemos" runat="server" />    
       </div>
       <div class="form-outline mb-3">
-         <label class="form-label" for="contrasena-input">Contraseña</label>
+         <label class="form-label">Nombre</label>
          <asp:TextBox ID="TextBoxNombreCliente" CssClass="form-control form-control-md" placeholder="Ingrese su nombre" AutoPostBack="false" runat="server" />    
       </div>
+      <div class="form-outline mb-3 d-flex align-items-baseline">
+          <label class="form-label col-2">Con envío</label>
+          <asp:CheckBox runat="server" ID="CheckBoxConEnvio" CssClass="col-1" oncheckedchanged="CheckBoxConEnvio_CheckedChanged" AutoPostBack="true" />
+      </div>
       <div class="text-center text-lg-start mt-4 pt-2">
-         <asp:Button Text="Confirmar envío" ID="ButtonConfirmar"  runat="server" CssClass="btn btn-primary btn-md"/>
-         <asp:Button Text="Volver" ID="ButtonVolver"  runat="server" CssClass="btn btn-primary btn-md"/> 
+         <asp:Button Text="Confirmar pedido" ID="ButtonConfirmar"  runat="server" OnClick="ButtonConfirmar_Click" CssClass="btn btn-info btn-md"/>
+         <asp:Button Text="Volver" ID="ButtonVolver"  runat="server" CssClass="btn btn-danger btn-md"/> 
       </div>   
    </asp:Panel>
-   <div class="col-lg-4">
-
+   <asp:Panel runat="server" CssClass="col-lg-12" ID="StepConfirm" Visible="false">
+     <div class="d-flex justify-content-center col-12"> 
+       <h2>¡Pedido confirmado! En breve nos contactaremos contigo</h2>
+      <img src="images/Checkmark.svg" class="animated bounceIn" alt="Logo check" height="250" />
+     </div>
+   </asp:Panel>
+   <asp:Panel runat="server" ID="PanelCarrito" CssClass="col-lg-4">
       <div class="mb-3">
           <div class="pt-4">
               <h5 class="mb-3"><i class="fa fa-shopping-cart"></i> Mi carrito</h5>
@@ -104,6 +113,7 @@
                   </li>
               </ul>
               <asp:Button  runat="server" ID="ButtonAvanzar" CssClass="btn btn-primary btn-block" OnClick="ButtonAvanzar_Click" Text="Avanzar"></asp:Button>
+              <asp:Label runat="server" ID="LabelErrorAlAvanzar" CssClass="text-danger" Text="¡Debe haber productos en el carrito!" Visible="false"></asp:Label>
           </div>
       </div>
 
@@ -123,8 +133,7 @@
             </div>
         </div>
       </div>
-
-   </div>
+   </asp:Panel>
 <script>
     function variarCantidad(cantidad, id) {
         var url = window.location.href
@@ -142,7 +151,6 @@
                     ? `?reducir=${id}`
                     : `?reducirTodo=${id}`
         }
-        console.log(url)
         window.location.href = url
     }
 </script>
