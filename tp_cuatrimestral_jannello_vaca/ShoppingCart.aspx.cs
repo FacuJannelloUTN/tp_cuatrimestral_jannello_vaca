@@ -23,6 +23,7 @@ namespace tp_cuatrimestral_jannello_vaca
                     carrito.Descuento = new Descuento();
                     carrito.Descuento.Porcentaje = 0;
                     carrito.Descuento.Codigo = "";
+                    carrito.ConEnvio = false;
                 }        
             }
             Carrito = new Func<Carrito>(() => {
@@ -31,6 +32,7 @@ namespace tp_cuatrimestral_jannello_vaca
               carritoVacio.Descuento = new Descuento();
               carritoVacio.Descuento.Porcentaje = 0;
               carritoVacio.Descuento.Codigo = "";
+              carritoVacio.ConEnvio = false; 
               return Session["Carrito"] != null
                 ? (Carrito)Session["Carrito"]
                 : carritoVacio;
@@ -101,11 +103,39 @@ namespace tp_cuatrimestral_jannello_vaca
 
         protected void CheckBoxConEnvio_CheckedChanged(object sender, EventArgs e)
         {
-            return;
+            Carrito carrito = (Carrito)Session["Carrito"];
+            carrito.ConEnvio = !carrito.ConEnvio;
+            Session.Add("Carrito", carrito);
         }
 
         protected void ButtonConfirmar_Click(object sender, EventArgs e)
         {
+            Page.Validate();
+            if (!Page.IsValid)
+            {
+                return;
+            }
+            Carrito carrito = (Carrito)Session["Carrito"];
+            carrito.generarCodigoAleatorio();
+            carrito.Entregado = false;
+            carrito.Finalizado = true;
+            carrito.MontoTotal = new Func<decimal>(() =>
+            {
+                return carrito.Descuento.Porcentaje != 0
+                ? Carrito.Productos.Aggregate(decimal.Parse("0"), (a, b) => a += b.Precio) * carrito.Descuento.Porcentaje / 100
+                : Carrito.Productos.Aggregate(decimal.Parse("0"), (a, b) => a += b.Precio);
+            })();
+            LoginUsuarios usuariosNegocio = new LoginUsuarios();
+            long id = usuariosNegocio.buscarIdPorMail(TextBoxMailCliente.Text);
+            if (id == 0)
+            {
+                usuariosNegocio.crearUsuarioDeCliente(TextBoxMailCliente.Text, TextBoxNombreCliente.Text);
+                id = usuariosNegocio.buscarIdPorMail(TextBoxMailCliente.Text);
+            }
+            carrito.Comprador = new Usuario();
+            carrito.Comprador.Id = id;
+            CarritoNegocio carritoNegocio = new CarritoNegocio();
+            carritoNegocio.cargarUnCarrito(carrito);
             LabelErrorAlAvanzar.Visible = false;
             Step1.Visible = false;
             Step2.Visible = false;

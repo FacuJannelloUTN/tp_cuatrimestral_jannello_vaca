@@ -67,9 +67,10 @@
       <div class="form-outline mb-4">
          <label class="form-label">Email</label>
          <asp:TextBox TextMode="Email" ID="TextBoxMailCliente" CssClass="form-control form-control-md" placeholder="Ingrese email al que quiere que nos contactemos" runat="server" />    
+         <asp:RequiredFieldValidator runat="server" ErrorMessage="Debe completar con un email" SetFocusOnError="true" ControlToValidate="TextBoxMailCliente"></asp:RequiredFieldValidator>
       </div>
       <div class="form-outline mb-3">
-         <label class="form-label">Nombre</label>
+         <label class="form-label">Nombre (opcional) </label>
          <asp:TextBox ID="TextBoxNombreCliente" CssClass="form-control form-control-md" placeholder="Ingrese su nombre" AutoPostBack="false" runat="server" />    
       </div>
       <div class="form-outline mb-3 d-flex align-items-baseline">

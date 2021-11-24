@@ -33,7 +33,47 @@ namespace negocio
             }
             return respuesta;
         }
+        public long buscarIdPorMail (string mail)
+        {
+            long id = 0;
+            string consulta = $"Select id from Usuarios where mail = '{mail}'";
+            try
+            {
+                AccesoDatos.setearConsulta(consulta);
+                AccesoDatos.ejecutarLectura();
+                if (AccesoDatos.Lector.Read())
+                {
+                    id = (long)AccesoDatos.Lector["id"];
+                }
+            } catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                AccesoDatos.cerrarConexion();
+            }
+            return id;
+        }
 
+        public void crearUsuarioDeCliente(string mail, string nombre="", string contrasenia = "")
+        {
+            string consulta = "Insert into Usuarios (mail, nombre, contrasenia, idTipoDeUsuario) values " +
+                $"('{mail}', '{nombre}', '{contrasenia}', {(int)TipoUsuario.CLIENTE})";
+            try
+            {
+                AccesoDatos.setearConsulta(consulta);
+                AccesoDatos.ejectutarAccion();           
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                AccesoDatos.cerrarConexion();
+            }
+        }
     }
     
 }
