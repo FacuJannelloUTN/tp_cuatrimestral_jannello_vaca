@@ -46,7 +46,7 @@
     <Compile Include="CategoriaNegocio.cs" />
     <Compile Include="DescuentoNegocio.cs" />
     <Compile Include="MarcaNegocio.cs" />
-    <Compile Include="LoginUsuarios.cs" />
+    <Compile Include="UsuariosNegocio.cs" />
     <Compile Include="ProductoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

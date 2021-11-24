@@ -125,7 +125,7 @@ namespace tp_cuatrimestral_jannello_vaca
                 ? Carrito.Productos.Aggregate(decimal.Parse("0"), (a, b) => a += b.Precio) * carrito.Descuento.Porcentaje / 100
                 : Carrito.Productos.Aggregate(decimal.Parse("0"), (a, b) => a += b.Precio);
             })();
-            LoginUsuarios usuariosNegocio = new LoginUsuarios();
+            UsuariosNegocio usuariosNegocio = new UsuariosNegocio();
             long id = usuariosNegocio.buscarIdPorMail(TextBoxMailCliente.Text);
             if (id == 0)
             {

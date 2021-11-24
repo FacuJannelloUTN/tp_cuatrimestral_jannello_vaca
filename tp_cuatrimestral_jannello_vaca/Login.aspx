@@ -26,4 +26,25 @@
       </div>
   </div>
 </section>
+<script>
+    function alertUsuarioInexistente() {
+        Swal.fire({
+            title: '¡Ups!',
+            text: 'El usuario ingresado no existe',
+            icon: 'error',
+            timer: 1500,
+            showConfirmButton: false
+        })
+    }
+    function alertDatosVacios() {
+        
+        Swal.fire({
+            title: '¡Datos vacíos!',
+            text: 'Debes completar ambos campos antes de enviarlos',
+            icon: 'error',
+            timer: 1500,
+            showConfirmButton: false
+        })
+    }
+</script>
 </asp:Content>

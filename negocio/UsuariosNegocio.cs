@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace negocio
 {
-    public class LoginUsuarios
+    public class UsuariosNegocio
     {
         AccesoDatos AccesoDatos = new AccesoDatos("(local)\\SQLEXPRESS", "TPFinalPrograIII");
         public bool ValidarLogueo(string _mail, string _pass, ref Usuario userLog)

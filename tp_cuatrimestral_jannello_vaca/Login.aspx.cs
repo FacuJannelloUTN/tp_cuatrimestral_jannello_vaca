@@ -12,7 +12,7 @@ namespace tp_cuatrimestral_jannello_vaca
     public partial class Login : System.Web.UI.Page
     {
         public Usuario userLog = new Usuario();
-        public negocio.LoginUsuarios Consultas = new LoginUsuarios();
+        public UsuariosNegocio Consultas = new UsuariosNegocio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,12 +41,12 @@ namespace tp_cuatrimestral_jannello_vaca
                     }
                     else
                     {
-                        Response.Write("<script>alert('USUARIO NO ENCONTRADO')</script>");
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alertUsuarioInexistente", "alertUsuarioInexistente();", true);
                     }
                 }
                 else
                 {
-                    Response.Write("<script>alert('COMPLETE AMBOS CAMPOS')</script>");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertDatosVacios", "alertDatosVacios();", true);
                 }
             }
             catch (Exception ex)

@@ -10,5 +10,8 @@ namespace dominio
     {
         public string Codigo {get; set; }
         public decimal Porcentaje { get; set; }
+        public bool Activa { get; set; }
+
+
     }
 }
