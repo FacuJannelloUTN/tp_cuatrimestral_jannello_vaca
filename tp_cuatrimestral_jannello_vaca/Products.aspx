@@ -1,14 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="tp_cuatrimestral_jannello_vaca.Products" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">    <asp:UpdatePanel runat="server">
-        <ContentTemplate>   <div style="height: 3em; left: 0;background: #0094ff; width: 100%; position:fixed; top: 6em;  border: 2px solid #000; z-index:5; text-align:center; vertical-align:middle; padding-top:1em;" >
+        <ContentTemplate>   <div style="height: 4em; left: 0; width: 100%; position:fixed; top: 6em; z-index:5; text-align:center; vertical-align:middle; padding-top:1em; color:white;
+border-top:3px solid white; " 
+     class="bg-blue">
         
 
     BUSCAR:&nbsp
     <asp:TextBox ID="products_buscar" runat="server" CssClass="drop" width="25%" AutoPostBack="false" OnTextChanged="products_buscar_TextChanged"></asp:TextBox>
+    &nbsp&nbsp
     CATEGORIA:&nbsp
     <asp:DropDownList ID="products_categorias" runat="server" CssClass="drop" AutoPostBack="true" width="10%" OnSelectedIndexChanged="products_buscar_TextChanged"></asp:DropDownList>
+    &nbsp&nbsp
     MARCA:&nbsp
     <asp:DropDownList ID="products_marca" runat="server" CssClass="drop" AutoPostBack="true" width="10%" OnSelectedIndexChanged="products_buscar_TextChanged"></asp:DropDownList>
+    &nbsp&nbsp
     PRECIO: &nbsp
     <asp:TextBox ID="products_precioMinimo" placeholder="Mínimo" runat="server" CssClass="drop" AutoPostBack="false" width="5%" text-align="center" OnTextChanged="products_buscar_TextChanged"></asp:TextBox>
     &nbsp

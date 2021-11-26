@@ -17,6 +17,17 @@ namespace tp_cuatrimestral_jannello_vaca
             if (!IsPostBack)
             {
                 this.updateTablaPromociones();
+                DescuentoRepeater.DataSource = allDescuentos;
+                DescuentoRepeater.DataBind();
+
+                int cont = 0;
+                foreach (Descuento item in allDescuentos)
+                {
+                    ((TextBox)DescuentoRepeater.Items[cont].FindControl("DescuentoNombre")).Text = item.Codigo.ToString();
+                    ((TextBox)DescuentoRepeater.Items[cont].FindControl("DescuentoPorcentaje")).Text = string.Format("{0:00.00}", item.Porcentaje);
+                    ((CheckBox)DescuentoRepeater.Items[cont].FindControl("DescuentoActivo")).Checked = item.Activa;
+                    cont++;
+                }
             }
         }
 

@@ -15,12 +15,48 @@ namespace tp_cuatrimestral_jannello_vaca
     {
 
         /// <summary>
-        /// ButtonCrear control.
+        /// DescuentoNombreNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCrear;
+        protected global::System.Web.UI.WebControls.TextBox DescuentoNombreNew;
+
+        /// <summary>
+        /// DescuentoPorcentajeNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DescuentoPorcentajeNew;
+
+        /// <summary>
+        /// DescuentoActivoNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox DescuentoActivoNew;
+
+        /// <summary>
+        /// ButtonAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAdd;
+
+        /// <summary>
+        /// DescuentoRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater DescuentoRepeater;
     }
 }
