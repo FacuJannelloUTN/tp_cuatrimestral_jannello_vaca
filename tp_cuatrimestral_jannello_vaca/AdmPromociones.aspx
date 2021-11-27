@@ -19,13 +19,13 @@
 								<asp:TextBox ID="DescuentoNombreNew" runat="server" TextMode="SingleLine"></asp:TextBox>
 							</td>
 							<td style="width:19.8%">
-								<asp:TextBox ID="DescuentoPorcentajeNew" runat="server" TextMode="Number" MaxLength="5" AutoPostBack="false"></asp:TextBox>
+								<asp:TextBox ID="DescuentoPorcentajeNew" runat="server" MaxLength="5" AutoPostBack="false"></asp:TextBox>
 							</td>
 							<td style="width:20%; color:white">
-                                <asp:CheckBox ID="DescuentoActivoNew" TextMode="Number" Text="Activo" runat="server" />
+                                <asp:CheckBox ID="DescuentoActivoNew" Text="Activo" runat="server" />
 							</td>
 							<td class="text-right" style="width:20.5%">
-                                <asp:Button  ID="ButtonAdd" runat="server" Text="AGREGAR" class="btn btn-outline-light" Width="62%"/>
+                                <asp:Button  ID="ButtonAdd" runat="server" Text="AGREGAR" class="btn btn-outline-light" Width="62%" OnClick="AgregarDescuento"/>
 							</td>
 						</tr>
                         </tbody>
@@ -33,7 +33,7 @@
 </table>
 
 
-                        <div style="height: 280px; overflow: scroll;" class="bg-blue">
+                        <div style="height: 480px; overflow: scroll;" class="bg-blue">
                         <table class="table user-list">
                         
                         <asp:Repeater runat="server" ID="DescuentoRepeater">
@@ -61,4 +61,36 @@
                     </div>
 			</ContentTemplate>
     </asp:UpdatePanel>
+
+<script>
+    function alertDatosVacios() {
+        
+        Swal.fire({
+            title: '¡Datos vacíos!',
+            text: 'Debes completar ambos campos antes de enviarlos',
+            icon: 'error',
+            timer: 1500,
+            showConfirmButton: false
+        })
+	}
+    function alertDescuentoRechazado() {
+        Swal.fire({
+            title: '¡Error!',
+            text: 'Verifique los datos completados',
+            icon: 'error',
+            timer: 1500,
+            showConfirmButton: false
+        })
+    }
+    function alertDescuentoAgregado() {
+        Swal.fire({
+            title: '¡Descuento Agregado!',
+            text: 'Haz agregado el descuento con éxito',
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false
+        })
+	}
+</script>
+
 </asp:Content>
