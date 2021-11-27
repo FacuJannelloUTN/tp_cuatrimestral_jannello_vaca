@@ -15,6 +15,7 @@ namespace tp_cuatrimestral_jannello_vaca
         public Carrito Carrito { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            validateUsuarioLoggeado();
             if (!IsPostBack) {
                 this.Descuento = 0;
                 if (Session["Carrito"] != null)
@@ -64,6 +65,20 @@ namespace tp_cuatrimestral_jannello_vaca
             }
         }
 
+        private void validateUsuarioLoggeado()
+        {
+            if (Session["UserLog"] == null)
+            {
+                MensajeDescuentos.Visible = true;
+                PanelDescuentosEnCarrito.Visible = false;
+
+            }
+            else
+            {
+                MensajeDescuentos.Visible = false;
+                PanelDescuentosEnCarrito.Visible = true;
+            }
+        }
         protected void ButtonSubmitCodigo_Click(object sender, EventArgs e)
         {
             DescuentoNegocio descuentoNegocio = new DescuentoNegocio();

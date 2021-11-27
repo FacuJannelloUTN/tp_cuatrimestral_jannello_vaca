@@ -60,6 +60,16 @@
                     </li>
                    </asp:Panel>
                    <asp:Panel runat="server" CssClass="navbar-nav mr-auto" Visible="false" ID="PanelMenuParaEmpleados">
+                    <li class="nav-item active" >
+                        <a class="nav-link text-light" runat="server" href="~/Products">
+                            <i class="fa fa-rocket"></i> Catálogo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" runat="server" href="~/ShoppingCart">
+                            <i class="fa fa-shopping-cart"></i> Mi Carrito
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" runat="server" href="~/AdmMarcas">
                             <i class="fa fa-shopping-bag"></i> Administrar Marcas
@@ -75,12 +85,17 @@
                             <i class="fa fa-shopping-bag"></i> Administrar Productos
                         </a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-light" runat="server" href="~/AdmPromociones">
+                        <i class="fa fa-shopping-bag"></i> Administrar Descuentos
+                    </a>
+                    </li>
                     </asp:Panel>
                  </ul>
             </div>
             <asp:Panel runat="server" ID="AccesoAPortalEmpleados">
                 <a class="nav-link text-light" runat="server" href="~/Login">
-                            <i class="fa fa-sign-in"></i> Portal de empleados</a>
+                            <i class="fa fa-sign-in"></i> Iniciar Sesión</a>
 
             </asp:Panel>
             <asp:Panel runat="server" ID="PanelUsuarioLoggeado" Visible="false" CssClass="d-flex justify-content-around align-items-center">
