@@ -114,6 +114,24 @@ namespace tp_cuatrimestral_jannello_vaca
         protected global::System.Web.UI.WebControls.Label LabelErrorAlAvanzar;
 
         /// <summary>
+        /// MensajeDescuentos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MensajeDescuentos;
+
+        /// <summary>
+        /// PanelDescuentosEnCarrito control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelDescuentosEnCarrito;
+
+        /// <summary>
         /// TextBoxCodigoDescuento control.
         /// </summary>
         /// <remarks>

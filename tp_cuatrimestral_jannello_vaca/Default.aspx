@@ -15,7 +15,7 @@
       </a>
       <a class="col-sm-8 col-md-3 col-lg-4 col-xl-2 card p-0 animated fadeInLeft" runat="server" href="~/Login">
             <img class="card-img-top bg-info rounded w-100" src="images/team.png" />
-            <div class="text-dark text-center"><h5 class="text-decoration-none">Portal de empleados</h5></div>
+            <div class="text-dark text-center"><h5 class="text-decoration-none">Iniciar sesión</h5></div>
       </a>
   </div>
 </section>

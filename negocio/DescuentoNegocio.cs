@@ -63,5 +63,46 @@ namespace negocio
            }
            return descuento;
         }
+
+        public bool AgregarDescuento(Descuento auxDescuentos) //codigo, porcentaje, estado
+        {
+            bool err = false;
+            try
+            {
+                string query = "";
+            
+                query = "Insert into Descuentos values (";
+                query += ("'" + auxDescuentos.Codigo + "',");
+                query += ( auxDescuentos.Porcentaje.ToString().Replace(",", ".") + ",");
+
+                query += (Convert.ToByte(auxDescuentos.Activa)) + ")";
+            
+                AccesoDatos.setearConsulta(query);
+                AccesoDatos.ejectutarAccion();
+                err = true;
+            }
+            catch
+            {
+                err = false;
+            }
+            finally
+            {
+                AccesoDatos.cerrarConexion();
+            }
+            return err;
+        }
+
+        public void ModificarCodigo(Descuento auxDescuentos)
+        {
+            //if (ProductosListar("where CodBarras = '" + auxDescuentos.CodBarras + "'").Count > 0)
+            //{
+            //    query = "Update KRProductos set ";
+            //    query += ("Descripcion = '" + auxDescuentos.Descripcion + "',");
+            //    query += ("estado = " + Convert.ToByte(auxDescuentos.Estado) + ",");
+            //    query += ("PrecioVenta = " + auxDescuentos.PrecioVenta.ToString().Replace(",", "."));
+
+            //    query += " where CodBarras = '" + auxDescuentos.CodBarras + "'";
+            //}
+        }
     }
 }

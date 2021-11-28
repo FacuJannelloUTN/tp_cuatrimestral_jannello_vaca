@@ -117,23 +117,29 @@
               <asp:Label runat="server" ID="LabelErrorAlAvanzar" CssClass="text-danger" Text="¡Debe haber productos en el carrito!" Visible="false"></asp:Label>
           </div>
       </div>
-
-      <div class="mb-3">
-        <div class="pt-4">
-            <label>Agregar código de descuento (opcional)</label>
-            <div>
-                <div class="mt-3">
-                    <div class="md-form md-outline mb-0">
-                        <asp:TextBox ID="TextBoxCodigoDescuento" runat="server" CssClass="form-control font-weight-light col-12" Text="" placeholder="Ingrese código de descuento"></asp:TextBox>
-                        <div class="input-group-append d-flex align-items-center justify-content-around col-12">
-                                <asp:Button ID="ButtonSubmitCodigo" runat="server" Text="Ingresar" CssClass="btn btn-outline-primary" OnClick="ButtonSubmitCodigo_Click"/>
+       <div style="width:100%; text-align:center;" ><b>
+       <asp:Label ID="MensajeDescuentos" Text="REGÍSTRATE PARA PODER UTILIZAR LOS CÓDIGOS DE DESCUENTOS" style="color:darkred;" runat="server" />
+        </b> </div> 
+       <asp:Panel runat="server" ID="PanelDescuentosEnCarrito">
+      <div class="mb-3" style=" width:100%; text-align:center; ">
+       <!--<div >-->
+          <br />        
+          <label>Agregar código de descuento (opcional)</label><br />
+            <!--<div>
+                <div class="mt-3" style="text-align:center" >
+                    <div class="md-form md-outline mb-0" > -->
+                        <asp:TextBox ID="TextBoxCodigoDescuento" runat="server" CssClass="form-control font-weight-light col-12" Text="" placeholder="Ingrese código de descuento"></asp:TextBox><br />
+                        <!--<div class="input-group-append d-flex align-items-center justify-content-around col-12">-->
+                                <asp:Button ID="ButtonSubmitCodigo" runat="server" Text="Validar código" CssClass="btn btn-outline-primary" OnClick="ButtonSubmitCodigo_Click"
+                                    style=" text-align:center; width:60% "/><br />
                                 <asp:Label ID="LabelMensajeRespuestaCodigo" runat="server" Text=""></asp:Label>
-                        </div>
+                        <!--</div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
       </div>
+        </asp:Panel>
    </asp:Panel>
 <script>
     function variarCantidad(cantidad, id) {
