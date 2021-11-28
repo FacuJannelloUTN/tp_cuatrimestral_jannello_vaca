@@ -143,7 +143,7 @@ namespace tp_cuatrimestral_jannello_vaca
             long id = usuariosNegocio.buscarIdPorMail(TextBoxMailCliente.Text);
             if (id == 0)
             {
-                usuariosNegocio.crearUsuarioDeCliente(TextBoxMailCliente.Text, TextBoxNombreCliente.Text);
+                usuariosNegocio.crearUsuario(TextBoxMailCliente.Text, TextBoxNombreCliente.Text);
                 id = usuariosNegocio.buscarIdPorMail(TextBoxMailCliente.Text);
             }
             carrito.Comprador = new Usuario();

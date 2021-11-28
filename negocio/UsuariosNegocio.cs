@@ -56,10 +56,10 @@ namespace negocio
             return id;
         }
 
-        public void crearUsuarioDeCliente(string mail, string nombre="", string contrasenia = "")
+        public void crearUsuario(string mail, string nombre="", string contrasenia = "", TipoUsuario tipo = TipoUsuario.CLIENTE)
         {
             string consulta = "Insert into Usuarios (mail, nombre, contrasenia, idTipoDeUsuario) values " +
-                $"('{mail}', '{nombre}', '{contrasenia}', {(int)TipoUsuario.CLIENTE})";
+                $"('{mail}', '{nombre}', '{contrasenia}', {(int)tipo})";
             try
             {
                 AccesoDatos.setearConsulta(consulta);
@@ -74,6 +74,7 @@ namespace negocio
                 AccesoDatos.cerrarConexion();
             }
         }
+
     }
     
 }

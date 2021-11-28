@@ -61,23 +61,28 @@
                    </asp:Panel>
                    <asp:Panel runat="server" CssClass="navbar-nav mr-auto" Visible="false" ID="PanelMenuParaEmpleados">
                     <li class="nav-item">
-                        <a class="nav-link text-light" runat="server" href="~/AdmMarcas">
-                            <i class="fa fa-shopping-bag"></i> Administrar Marcas
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" runat="server" href="~/AdmCategorias">
-                            <i class="fa fa-shopping-bag"></i> Administrar Categorías
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link text-light" runat="server" href="~/AdmProductos">
                             <i class="fa fa-shopping-bag"></i> Administrar Productos
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link text-light" runat="server" href="~/AdmMarcas">
+                            <i class="fa fa-table"></i> Administrar Marcas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" runat="server" href="~/AdmCategorias">
+                            <i class="fa fa-table"></i> Administrar Categorías
+                        </a>
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link text-light" runat="server" href="~/AdmPromociones">
-                        <i class="fa fa-shopping-bag"></i> Administrar Descuentos
+                        <i class="fa fa-money"></i> Administrar Descuentos
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-light" runat="server" href="~/RegistrarEmpleado">
+                        <i class="fa fa-user-plus"></i> Agregar empleados
                     </a>
                     </li>
                     </asp:Panel>
