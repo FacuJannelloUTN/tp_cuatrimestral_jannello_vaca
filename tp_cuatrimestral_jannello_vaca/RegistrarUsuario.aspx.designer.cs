@@ -11,8 +11,17 @@ namespace tp_cuatrimestral_jannello_vaca
 {
 
 
-    public partial class RegistrarEmpleado
+    public partial class RegistrarUsuario
     {
+
+        /// <summary>
+        /// PanelRegistrar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelRegistrar;
 
         /// <summary>
         /// TextBoxNombre control.

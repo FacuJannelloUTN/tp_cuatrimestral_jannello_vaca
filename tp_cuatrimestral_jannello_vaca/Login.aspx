@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="tp_cuatrimestral_jannello_vaca.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
- <h2 class="text-center">Acceso al portal de empleados</h2>
+ <h2 class="text-center">Acceso al portal de SuperTech</h2>
  <section>
   <div>
     <div class="row d-flex justify-content-center align-items-center">
@@ -19,7 +19,7 @@
               </div>
               <div class="text-center text-lg-start mt-4 pt-2">
                   <asp:Button Text="Login" ID="login"  runat="server" CssClass="btn btn-primary btn-md" OnClick="ingreso"/>
-                <span class="small fw-bold mt-2 pt-1 mb-0">¿No tenés usuario? <a href="#!"
+                <span class="small fw-bold mt-2 pt-1 mb-0">¿No tenés usuario? <a href="~/RegistrarUsuario" runat="server"
                     class="link-danger">Registrarse</a></span>
               </div>
         </div>
@@ -30,7 +30,7 @@
     function alertUsuarioInexistente() {
         Swal.fire({
             title: '¡Ups!',
-            text: 'El usuario ingresado no existe',
+            text: 'Los datos ingresados no son correctos',
             icon: 'error',
             timer: 1500,
             showConfirmButton: false

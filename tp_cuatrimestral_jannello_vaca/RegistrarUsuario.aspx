@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegistrarEmpleado.aspx.cs" Inherits="tp_cuatrimestral_jannello_vaca.RegistrarEmpleado" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegistrarUsuario.aspx.cs" Inherits="tp_cuatrimestral_jannello_vaca.RegistrarUsuario" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<h2 class="text-center">Registrar un nuevo empleado</h2>
+<h2 class="text-center">Registrar un nuevo usuario</h2>
  <section>
-  <div>
+  <asp:Panel runat="server" ID="PanelRegistrar">
     <div class="row d-flex justify-content-center align-items-center">
       <div>
               <div class="form-outline mb-3">
@@ -22,7 +22,7 @@
               </div>
         </div>
       </div>
-  </div>
+  </asp:Panel>
 </section>
 <script>
     function alertUsuarioOcupado() {

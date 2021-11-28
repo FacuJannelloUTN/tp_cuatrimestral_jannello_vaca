@@ -9,25 +9,10 @@ using dominio;
 
 namespace tp_cuatrimestral_jannello_vaca
 {
-    public partial class RegistrarEmpleado : System.Web.UI.Page
+    public partial class RegistrarUsuario : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.validateUsuarioLoggeado();
-        }
-
-        private void validateUsuarioLoggeado()
-        {
-            if (Session["UserLog"] == null)
-            {
-                Session.Add("error", "No tienes permiso para ver este contenido");
-                Response.Redirect("Error.aspx", false);
-            }
-            else if (((Usuario)Session["UserLog"]).Tipo != TipoUsuario.EMPLEADO)
-            {
-                Session.Add("error", "No tienes permiso para ver este contenido");
-                Response.Redirect("Error.aspx", false);
-            }
         }
 
         protected void OnFocusCamposVacios(object sender, EventArgs e)
@@ -50,8 +35,18 @@ namespace tp_cuatrimestral_jannello_vaca
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertUsuarioOcupado", "alertUsuarioOcupado();", true);
                 return;
             }
-            usuarioNegocio.crearUsuario(TextBoxMail.Text, TextBoxNombre.Text, TextBoxContrasena.Text, TipoUsuario.EMPLEADO);
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertRegistroExitoso", "alertRegistroExitoso();", true);
+            if (Session["UserLog"] == null)
+            {
+                usuarioNegocio.crearUsuario(TextBoxMail.Text, TextBoxNombre.Text, TextBoxContrasena.Text, TipoUsuario.CLIENTE);
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertRegistroExitoso", "alertRegistroExitoso();", true);
+            } else if (Session["UserLog"] != null && ((Usuario)Session["UserLog"]).Tipo != TipoUsuario.EMPLEADO) { 
+                usuarioNegocio.crearUsuario(TextBoxMail.Text, TextBoxNombre.Text, TextBoxContrasena.Text, TipoUsuario.CLIENTE);
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertRegistroExitoso", "alertRegistroExitoso();", true);
+            } else
+            {
+                usuarioNegocio.crearUsuario(TextBoxMail.Text, TextBoxNombre.Text, TextBoxContrasena.Text, TipoUsuario.EMPLEADO);
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertRegistroExitoso", "alertRegistroExitoso();", true);
+            }
         }
     }
 }

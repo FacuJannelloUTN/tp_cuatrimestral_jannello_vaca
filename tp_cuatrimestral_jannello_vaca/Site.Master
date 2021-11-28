@@ -81,7 +81,7 @@
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link text-light" runat="server" href="~/RegistrarEmpleado">
+                    <a class="nav-link text-light" runat="server" href="~/RegistrarUsuario">
                         <i class="fa fa-user-plus"></i> Agregar empleados
                     </a>
                     </li>
