@@ -24,10 +24,9 @@ namespace tp_cuatrimestral_jannello_vaca
                     PanelLogoUtn.Visible = false;
                     PanelMenuParaClientes.Visible = false;
                     PanelMenuParaEmpleados.Visible = true;
-                    PanelUsuarioLoggeado.Visible = true;
-                    AccesoAPortalEmpleados.Visible = false;
-
                 }
+                PanelUsuarioLoggeado.Visible = true;
+                AccesoAPortalEmpleados.Visible = false;
             }
 
         }
