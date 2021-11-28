@@ -97,7 +97,7 @@
                     <span>$<%= Carrito.Productos.Aggregate(decimal.Parse("0"),(a,b) => a += b.Precio).ToString("N2") %></span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center px-0">Descuento
-                    <label><%= Carrito.Descuento.Porcentaje %> %</label>
+                    <label><%= Descuento %> %</label>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                       <div>

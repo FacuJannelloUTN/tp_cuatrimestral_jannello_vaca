@@ -17,7 +17,6 @@ namespace tp_cuatrimestral_jannello_vaca
         {
             validateUsuarioLoggeado();
             if (!IsPostBack) {
-                this.Descuento = 0;
                 if (Session["Carrito"] != null)
                 {
                     Carrito carrito = (Carrito)Session["Carrito"];

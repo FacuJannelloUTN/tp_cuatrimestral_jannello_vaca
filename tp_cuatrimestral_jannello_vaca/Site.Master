@@ -60,16 +60,6 @@
                     </li>
                    </asp:Panel>
                    <asp:Panel runat="server" CssClass="navbar-nav mr-auto" Visible="false" ID="PanelMenuParaEmpleados">
-                    <li class="nav-item active" >
-                        <a class="nav-link text-light" runat="server" href="~/Products">
-                            <i class="fa fa-rocket"></i> Catálogo
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" runat="server" href="~/ShoppingCart">
-                            <i class="fa fa-shopping-cart"></i> Mi Carrito
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" runat="server" href="~/AdmMarcas">
                             <i class="fa fa-shopping-bag"></i> Administrar Marcas
