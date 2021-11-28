@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
   <section class="d-flex justify-content-center flex-column align-items-center">  
     <h3>¡Ups! Algo malio sal...</h3>
-    <div class="col-3"><img src="images/malirSal.jpg" alt="Malir sal" height="250"/></div>
+    <div class="col-3"><img src="images/malirSal.jpg" alt="Malir sal" height="300"/></div>
     <h5>Je, es lo primero que sale mal</h5>
     <p><%= Session["error"] %></p>
     <div>

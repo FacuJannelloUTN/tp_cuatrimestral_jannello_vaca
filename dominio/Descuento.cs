@@ -12,6 +12,5 @@ namespace dominio
         public decimal Porcentaje { get; set; }
         public bool Activa { get; set; }
 
-
     }
 }

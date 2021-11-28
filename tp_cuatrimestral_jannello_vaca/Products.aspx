@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="tp_cuatrimestral_jannello_vaca.Products" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">    <asp:UpdatePanel runat="server">
-        <ContentTemplate>   <div style="height: 3em; left: 0;background: #0094ff; width: 100%; position:fixed; top: 6em;  border: 2px solid #000; z-index:5; text-align:center; vertical-align:middle; padding-top:1em;" >
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:UpdatePanel runat="server">
+        <ContentTemplate>   
+<div style="height: 3em; left: 0;background: #0094ff; width: 100%; position:fixed; top: 6em;  border: 2px solid #000; z-index:5; text-align:center; vertical-align:middle; padding-top:1em;" >
         
 
     BUSCAR:&nbsp
@@ -14,7 +16,8 @@
     &nbsp
     <asp:TextBox ID="products_precioMaximo" placeholder="Máximo" runat="server" CssClass="drop" AutoPostBack="false" width="5%" text-align="center" OnTextChanged="products_buscar_TextChanged"></asp:TextBox>
 
-</div>
+
+</div>
 <div class="container">
   <div class="row">
     <% foreach (var producto in allProductos)
