@@ -59,6 +59,10 @@ create Table Descuentos (
  estado bit not null,
 )
 go
+create Table ProductosEnCarritos(
+ idCarrito bigint not null foreign key references Carritos(id),
+ idProducto bigint not null foreign key references Productos(id)
+)
 insert into CategoriasProductos(nombre)
 values ('Televisor'), ('Celular'), ('Computadora'), ('Tablet'), ('Consola de juegos')
 go
@@ -82,15 +86,4 @@ insert into Usuarios values
 ('facuJanello', '12345678', 'facundojannellobaldi@gmail.com@hotmail.com', 1),
 ('facuJanelloCliente', '12345678', 'facuJanelloCliente@hotmail.com', 2)
 
-Select  P.id id,P.codArticulo,P.nombre,P.descripcion,M.nombre 'marca',C.nombre 'categoria',
-		P.URLimagen,P.precio, P.idMarca IdMarca, P.idCategoria IdCategoria, P.stock from Productos P 
-		inner join MarcasProductos M on M.id=P.idMarca
-		inner join CategoriasProductos C on C.id=P.idCategoria where P.estado = 1
-		and P.nombre like '%tv%'
-
-		Select  P.id id,P.codArticulo,P.nombre,P.descripcion,M.nombre 'marca',C.nombre 'categoria',
-		P.URLimagen,P.precio, P.idMarca IdMarca, P.idCategoria IdCategoria, P.stock from Productos P 
-		inner join MarcasProductos M on M.id=P.idMarca 
-		inner join CategoriasProductos C on C.id=P.idCategoria where P.estado = 1
-		and P.Precio >= 23000
 		
