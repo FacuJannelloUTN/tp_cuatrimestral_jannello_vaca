@@ -25,8 +25,6 @@ namespace tp_cuatrimestral_jannello_vaca
                 Session["Catalogo"] = allProductos;
 
 
-                products_categorias.Items.Clear();
-                products_categorias.Items.Add("Todos");
                 foreach (Categoria item in CategoriaNegocio.listar(""))
                 {
                     products_categorias.Items.Add(item.Descripcion);

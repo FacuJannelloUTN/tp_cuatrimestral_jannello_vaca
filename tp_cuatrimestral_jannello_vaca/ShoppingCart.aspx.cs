@@ -159,5 +159,13 @@ namespace tp_cuatrimestral_jannello_vaca
             ButtonAvanzar.Visible = false;
             Session.Remove("Carrito");
         }
+
+        protected void ButtonVolver_Click(object sender, EventArgs e)
+        {
+            LabelErrorAlAvanzar.Visible = false;
+            Step1.Visible = true;
+            Step2.Visible = false;
+            ButtonAvanzar.Visible = true;
+        }
     }
 }
