@@ -110,6 +110,11 @@ namespace tp_cuatrimestral_jannello_vaca
                 return;
             }
             LabelErrorAlAvanzar.Visible = false;
+            if (Session["UserLog"] != null)
+            {
+                this.generarCarritoEnDB();
+                return;
+            }
             Step1.Visible = false;
             Step2.Visible = true;
             ButtonAvanzar.Visible = false;
@@ -122,13 +127,8 @@ namespace tp_cuatrimestral_jannello_vaca
             Session.Add("Carrito", carrito);
         }
 
-        protected void ButtonConfirmar_Click(object sender, EventArgs e)
+        protected void generarCarritoEnDB()
         {
-            Page.Validate();
-            if (!Page.IsValid)
-            {
-                return;
-            }
             Carrito carrito = (Carrito)Session["Carrito"];
             carrito.generarCodigoAleatorio();
             carrito.Entregado = false;
@@ -140,7 +140,12 @@ namespace tp_cuatrimestral_jannello_vaca
                 : Carrito.Productos.Aggregate(decimal.Parse("0"), (a, b) => a += b.Precio);
             })();
             UsuariosNegocio usuariosNegocio = new UsuariosNegocio();
-            long id = usuariosNegocio.buscarIdPorMail(TextBoxMailCliente.Text);
+            long id = new Func<long>(() =>
+            {
+                return Session["UserLog"] == null
+                    ? usuariosNegocio.buscarIdPorMail(TextBoxMailCliente.Text)
+                    : ((Usuario)Session["UserLog"]).Id;
+            })();
             if (id == 0)
             {
                 usuariosNegocio.crearUsuario(TextBoxMailCliente.Text, TextBoxNombreCliente.Text);
@@ -165,6 +170,16 @@ namespace tp_cuatrimestral_jannello_vaca
             Step1.Visible = true;
             Step2.Visible = false;
             ButtonAvanzar.Visible = true;
+        }
+
+        protected void ButtonConfirmar_Click(object sender, EventArgs e)
+        {
+            Page.Validate();
+            if (!Page.IsValid)
+            {
+                return;
+            }
+            this.generarCarritoEnDB();
         }
     }
 }
