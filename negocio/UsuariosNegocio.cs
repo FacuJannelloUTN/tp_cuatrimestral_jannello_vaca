@@ -7,6 +7,32 @@ namespace negocio
     public class UsuariosNegocio
     {
         AccesoDatos AccesoDatos = new AccesoDatos("(local)\\SQLEXPRESS", "TPFinalPrograIII");
+        
+        public Usuario buscarPorId(long id)
+        {
+            Usuario user = new Usuario();
+            string consulta = $"select nombre, mail, contrasenia, idTipoDeUsuario from Usuarios where id = {id}";
+            try
+            {
+                AccesoDatos.setearConsulta(consulta);
+                AccesoDatos.ejecutarLectura();
+                if (AccesoDatos.Lector.Read())
+                {
+                    user.Nombre = (string)AccesoDatos.Lector["nombre"];
+                    user.Mail = (string)AccesoDatos.Lector["mail"];
+                    user.Contrasena = (string)AccesoDatos.Lector["contrasenia"];
+                    user.Id = id;
+                    user.Tipo = (int)AccesoDatos.Lector["idTipoDeUsuario"] == 1 ? TipoUsuario.EMPLEADO : TipoUsuario.CLIENTE;
+                }
+            } catch (Exception e)
+            {
+                throw e;
+            } finally
+            {
+                AccesoDatos.cerrarConexion();
+            }
+            return user;
+        }
         public bool ValidarLogueo(string _mail, string _pass, ref Usuario userLog)
         {
             bool respuesta = false;

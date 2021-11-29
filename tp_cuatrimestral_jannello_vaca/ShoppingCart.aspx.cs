@@ -81,10 +81,10 @@ namespace tp_cuatrimestral_jannello_vaca
         protected void ButtonSubmitCodigo_Click(object sender, EventArgs e)
         {
             DescuentoNegocio descuentoNegocio = new DescuentoNegocio();
-            decimal descuento = descuentoNegocio.buscarPorCodigo(TextBoxCodigoDescuento.Text);
-            Session.Add("DescuentoActivo", descuento);
-            Descuento = descuento;
-            if (descuento == 0)
+            Descuento desc = descuentoNegocio.buscarPorCodigo(TextBoxCodigoDescuento.Text);
+            Session.Add("DescuentoActivo", desc.Porcentaje);
+            Descuento = desc.Porcentaje;
+            if (desc.Porcentaje == 0)
             {
                 LabelMensajeRespuestaCodigo.CssClass = "text-danger";
                 LabelMensajeRespuestaCodigo.Text = "El código no existe";
@@ -97,7 +97,7 @@ namespace tp_cuatrimestral_jannello_vaca
             }
             Carrito.Descuento = new Descuento();
             Carrito.Descuento.Codigo = TextBoxCodigoDescuento.Text;
-            Carrito.Descuento.Porcentaje = descuento;
+            Carrito.Descuento.Porcentaje = desc.Porcentaje;
             Session.Add("Carrito", Carrito);
         }
 

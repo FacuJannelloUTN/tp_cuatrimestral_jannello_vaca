@@ -11,7 +11,32 @@ namespace negocio
     {
         AccesoDatos AccesoDatos = new AccesoDatos("(local)\\SQLEXPRESS", "TPFinalPrograIII");
 
-        public List<Descuento> listar(string where)
+        public Descuento buscarPorCodigo(string codigo)
+        {
+            Descuento desc = new Descuento();
+            try
+            {
+                string consulta = $"Select * from Descuentos where codigo = '{ codigo }'";
+                AccesoDatos.setearConsulta(consulta);
+                AccesoDatos.ejecutarLectura();
+                if (AccesoDatos.Lector.Read())
+                {
+                    desc.Porcentaje = (decimal)AccesoDatos.Lector["porcentaje"];
+                    desc.Codigo = codigo;
+                    desc.Activa = (bool)AccesoDatos.Lector["estado"];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                AccesoDatos.cerrarConexion();
+            }
+            return desc;
+        }
+        public List<Descuento> listar(string where = "")
         {
             List<Descuento> lista = new List<Descuento>();
             try
@@ -39,31 +64,6 @@ namespace negocio
             }
             return lista;
         }
-        public decimal buscarPorCodigo(string codigo)
-        {
-           decimal descuento;
-           try
-           {
-                string consulta = $"Select porcentaje from Descuentos where codigo = '{ codigo }' and estado = 1";
-                AccesoDatos.setearConsulta(consulta);
-                AccesoDatos.ejecutarLectura();
-                if (AccesoDatos.Lector.Read())
-                    descuento = (decimal)AccesoDatos.Lector["porcentaje"];
-                else
-                    descuento = 0;
-
-           }
-           catch (Exception ex)
-           {
-                throw ex;
-           }
-           finally
-           {
-                AccesoDatos.cerrarConexion();
-           }
-           return descuento;
-        }
-
         public bool AgregarDescuento(Descuento auxDescuentos) //codigo, porcentaje, estado
         {
             bool err = false;

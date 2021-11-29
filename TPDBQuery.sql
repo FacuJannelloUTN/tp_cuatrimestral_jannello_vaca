@@ -91,5 +91,9 @@ insert into Usuarios values
 use TPFinalPrograIII
 go
 select * from Carritos
-go
-select * from ProductosEnCarritos
+
+Select C.id id, C.codCompra, C.codDescuento, C.idComprador, C.conEnvio, C.fechaRealizado, C.fechaEntregado, C.finalizado, C.entregado, C.monto,
+D.estado 'estadoDescuento', D.porcentaje 'porcentajeDescuento', U.nombre 'nombreUsuario', U.contrasenia 'contraseniaUsuario', U.mail 'mailUsuario', U.idTipoDeUsuario 'tipoUsuario'
+from Carritos C
+inner join Descuentos D on D.codigo = C.codDescuento
+inner join Usuarios U on U.id = C.idComprador

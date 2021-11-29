@@ -21,7 +21,7 @@ namespace tp_cuatrimestral_jannello_vaca
                 CategoriaNegocio CategoriaNegocio = new CategoriaNegocio();
                 MarcaNegocio MarcaNegocio = new MarcaNegocio();
 
-                allProductos = productoNegocio.listar("");
+                allProductos = productoNegocio.listar("where P.estado = 1");
                 Session["Catalogo"] = allProductos;
 
 
@@ -69,7 +69,7 @@ namespace tp_cuatrimestral_jannello_vaca
             string mininoProd    = products_precioMinimo.Text;
             string maximoProd    = products_precioMaximo.Text;
 
-            string consulta = "";
+            string consulta = "where P.estado = 1";
 
 
             if(NombreProd != "")

@@ -42,7 +42,7 @@ namespace tp_cuatrimestral_jannello_vaca
         private void updateTablaProductos()
         {
             ProductoNegocio prodNegocio = new ProductoNegocio();
-            List<Producto> allProductos = prodNegocio.listar("");
+            List<Producto> allProductos = prodNegocio.listar("where P.estado = 1");
             Session.Add("allProductos", allProductos);
             TablaProductos.DataSource = (List<Producto>)Session["allProductos"];
             TablaProductos.DataBind();

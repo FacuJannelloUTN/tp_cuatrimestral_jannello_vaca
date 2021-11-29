@@ -7,7 +7,7 @@ namespace negocio
     public class ProductoNegocio
     {
         AccesoDatos AccesoDatos = new AccesoDatos("(local)\\SQLEXPRESS", "TPFinalPrograIII");
-        public List<Producto> listar(string and)
+        public List<Producto> listar(string where)
         {
             List<Producto> lista = new List<Producto>();
             try
@@ -16,7 +16,7 @@ namespace negocio
                 string consulta = "Select  P.id id,P.codArticulo,P.nombre,P.descripcion,M.nombre 'marca',C.nombre 'categoria'," +
                                     "P.URLimagen,P.precio, P.idMarca IdMarca, P.idCategoria IdCategoria, P.stock from Productos P " +
                                     "inner join MarcasProductos M on M.id=P.idMarca " +
-                                    "inner join CategoriasProductos C on C.id=P.idCategoria where P.estado = 1" + and;
+                                    "inner join CategoriasProductos C on C.id=P.idCategoria " + where;
                 AccesoDatos.setearConsulta(consulta);
                 AccesoDatos.ejecutarLectura();
                 while (AccesoDatos.Lector.Read())
