@@ -109,6 +109,7 @@
   <ItemGroup>
     <Content Include="AdmCategorias.aspx" />
     <Content Include="AdmMarcas.aspx" />
+    <Content Include="AdmPedidos.aspx" />
     <Content Include="AdmProductos.aspx" />
     <Content Include="AdmPromociones.aspx" />
     <Content Include="Content\animate.css" />
@@ -279,6 +280,13 @@
     </Compile>
     <Compile Include="AdmMarcas.aspx.designer.cs">
       <DependentUpon>AdmMarcas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdmPedidos.aspx.cs">
+      <DependentUpon>AdmPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdmPedidos.aspx.designer.cs">
+      <DependentUpon>AdmPedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdmProductos.aspx.cs">
       <DependentUpon>AdmProductos.aspx</DependentUpon>

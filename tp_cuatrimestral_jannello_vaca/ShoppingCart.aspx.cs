@@ -153,6 +153,7 @@ namespace tp_cuatrimestral_jannello_vaca
             }
             carrito.Comprador = new Usuario();
             carrito.Comprador.Id = id;
+            carrito.FechaRealizado = DateTime.Now;
             CarritoNegocio carritoNegocio = new CarritoNegocio();
             carritoNegocio.cargarUnCarrito(carrito);
             LabelErrorAlAvanzar.Visible = false;

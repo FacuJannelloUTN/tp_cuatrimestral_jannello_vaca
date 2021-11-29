@@ -48,6 +48,8 @@ create Table Carritos (
   codDescuento varchar(200) null,
   idComprador bigint not null foreign key references Usuarios(id),
   conEnvio bit not null,
+  fechaRealizado date not null,
+  fechaEntregado date null,
   finalizado bit not null,
   entregado bit not null,
   monto money not null, 
@@ -83,7 +85,11 @@ values
 insert into Usuarios values 
 ('alanVaca', '12345678', 'alan-gabriel@hotmail.com', 1),
 ('alanVacaCliente', '12345678', 'alanVacaCliente@hotmail.com', 2),
-('facuJanello', '12345678', 'facundojannellobaldi@gmail.com@hotmail.com', 1),
+('facuJanello', '12345678', 'facundojannellobaldi@gmail.com', 1),
 ('facuJanelloCliente', '12345678', 'facuJanelloCliente@hotmail.com', 2)
 
-		
+use TPFinalPrograIII
+go
+select * from Carritos
+go
+select * from ProductosEnCarritos

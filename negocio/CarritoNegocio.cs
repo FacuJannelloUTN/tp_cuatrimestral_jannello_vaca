@@ -12,8 +12,8 @@ namespace negocio
         AccesoDatos AccesoDatos = new AccesoDatos("(local)\\SQLEXPRESS", "TPFinalPrograIII");
         public void cargarUnCarrito(Carrito carrito)
         {
-            string consultaCarritos =  $"Insert into Carritos (codCompra, codDescuento, idComprador, conEnvio, finalizado, entregado, monto) " +
-                $"values ('{carrito.CodCompra}', '{carrito.Descuento.Codigo}', {carrito.Comprador.Id}, {carrito.devolverBit(carrito.ConEnvio)}, {carrito.devolverBit(carrito.Finalizado)}, {carrito.devolverBit(carrito.Entregado)}, {carrito.MontoTotal})";
+            string consultaCarritos =  $"Insert into Carritos (codCompra, codDescuento, idComprador, conEnvio, finalizado, entregado, monto, fechaRealizado) " +
+                $"values ('{carrito.CodCompra}', '{carrito.Descuento.Codigo}', {carrito.Comprador.Id}, {carrito.devolverBit(carrito.ConEnvio)}, {carrito.devolverBit(carrito.Finalizado)}, {carrito.devolverBit(carrito.Entregado)}, {carrito.MontoTotal}, '{carrito.FechaRealizado}')";
             
             try
             {

@@ -19,6 +19,10 @@ namespace dominio
         
         public decimal MontoTotal { get; set; }
 
+        public DateTime FechaRealizado { get; set; }
+
+        public DateTime FechaEntregado { get; set; }
+
         public void generarCodigoAleatorio ()
         {
             var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

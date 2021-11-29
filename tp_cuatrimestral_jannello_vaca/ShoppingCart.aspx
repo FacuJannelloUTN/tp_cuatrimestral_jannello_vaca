@@ -80,7 +80,7 @@
       <div class="text-center text-lg-start mt-4 pt-2">
          <asp:Button Text="Confirmar pedido" ID="ButtonConfirmar"  runat="server" OnClick="ButtonConfirmar_Click" CssClass="btn btn-info btn-md"/>
          <asp:Button Text="Volver" ID="ButtonVolver"  runat="server" CssClass="btn btn-danger btn-md" OnClick="ButtonVolver_Click"/> 
-      </div>   
+      </div>    
    </asp:Panel>
    <asp:Panel runat="server" CssClass="col-lg-12" ID="StepConfirm" Visible="false">
      <div class="d-flex justify-content-center col-12"> 
