@@ -62,7 +62,7 @@ border-top:3px solid white; "
             title: '¡Producto agregado!',
             text: 'Podrás verlo en tu carrito',
             icon:'success',
-            timer: 1500,
+            timer: 1200,
             showConfirmButton: false
         })
         setTimeout(function () {

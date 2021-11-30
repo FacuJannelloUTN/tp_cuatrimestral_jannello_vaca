@@ -129,7 +129,7 @@ namespace tp_cuatrimestral_jannello_vaca
 
         protected void generarCarritoEnDB()
         {
-            Carrito carrito = (Carrito)Session["Carrito"];
+            Carrito carrito = Carrito;
             carrito.generarCodigoAleatorio();
             carrito.Entregado = false;
             carrito.Finalizado = true;

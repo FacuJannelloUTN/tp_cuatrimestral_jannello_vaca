@@ -58,14 +58,5 @@ namespace tp_cuatrimestral_jannello_vaca
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox products_precioMaximo;
-
-        /// <summary>
-        /// products_buscar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        /// 
     }
 }

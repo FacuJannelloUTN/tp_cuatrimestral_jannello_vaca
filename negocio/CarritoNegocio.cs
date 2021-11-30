@@ -168,5 +168,38 @@ namespace negocio
             }
             return id;
         }
+        public void entregarPedido (long id)
+        {
+            string consulta = $"update Carritos set entregado = 1 where id = {id}";
+            try
+            {
+                AccesoDatos.setearConsulta(consulta);
+                AccesoDatos.ejectutarAccion();
+            } catch (Exception e)
+            {
+                throw e;
+            } finally
+            {
+                AccesoDatos.cerrarConexion();
+            }
+        }
+
+        public void reabrirPedido(long id)
+        {
+            string consulta = $"update Carritos set entregado = 0 where id = {id}";
+            try
+            {
+                AccesoDatos.setearConsulta(consulta);
+                AccesoDatos.ejectutarAccion();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                AccesoDatos.cerrarConexion();
+            }
+        }
     }
 }
