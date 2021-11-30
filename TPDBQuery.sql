@@ -97,3 +97,5 @@ D.estado 'estadoDescuento', D.porcentaje 'porcentajeDescuento', U.nombre 'nombre
 from Carritos C
 inner join Descuentos D on D.codigo = C.codDescuento
 inner join Usuarios U on U.id = C.idComprador
+
+"Update Descuentos set porcentaje = 7500,estado = 1 where codigo = 'DEBAJA'"

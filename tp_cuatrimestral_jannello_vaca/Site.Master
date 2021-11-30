@@ -82,7 +82,7 @@
                     </li>
                     <li class="nav-item">
                     <a class="nav-link text-light" runat="server" href="~/AdmPromociones">
-                        <i class="fa fa-money"></i> Descuentos (en construcción)
+                        <i class="fa fa-money"></i> Descuentos
                     </a>
                     </li>
                     <li class="nav-item">
