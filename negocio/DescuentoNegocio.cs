@@ -64,7 +64,7 @@ namespace negocio
             }
             return lista;
         }
-        public bool AgregarDescuento(Descuento auxDescuentos) //codigo, porcentaje, estado
+        public bool AgregarDescuento(Descuento auxDescuentos) 
         {
             bool err = false;
             try
@@ -94,15 +94,49 @@ namespace negocio
 
         public void ModificarCodigo(Descuento auxDescuentos)
         {
-            //if (ProductosListar("where CodBarras = '" + auxDescuentos.CodBarras + "'").Count > 0)
-            //{
-            //    query = "Update KRProductos set ";
-            //    query += ("Descripcion = '" + auxDescuentos.Descripcion + "',");
-            //    query += ("estado = " + Convert.ToByte(auxDescuentos.Estado) + ",");
-            //    query += ("PrecioVenta = " + auxDescuentos.PrecioVenta.ToString().Replace(",", "."));
+            try
+            {
+                string query = "";
+                query = "Update Descuentos set ";
+                query += ("porcentaje = " + auxDescuentos.Porcentaje.ToString().Replace(",", ".") + ",");
+                query += ("estado = " + Convert.ToByte(auxDescuentos.Activa));
 
-            //    query += " where CodBarras = '" + auxDescuentos.CodBarras + "'";
-            //}
+                query += " where codigo = '" + auxDescuentos.Codigo + "'";
+                AccesoDatos.setearConsulta(query);
+                AccesoDatos.ejectutarAccion();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                AccesoDatos.cerrarConexion();
+            }
+
+
+        }
+
+        public void EliminarCodigo(Descuento auxDescuentos)
+        {
+            try
+            {
+                string query = "";
+                query = "Delete Descuentos ";
+                query += " where codigo = '" + auxDescuentos.Codigo + "'";
+                AccesoDatos.setearConsulta(query);
+                AccesoDatos.ejectutarAccion();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                AccesoDatos.cerrarConexion();
+            }
+
+
         }
     }
 }

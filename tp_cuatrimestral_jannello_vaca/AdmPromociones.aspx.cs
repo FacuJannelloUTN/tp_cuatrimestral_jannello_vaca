@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using dominio;
 using negocio;
+using System.Threading;
 
 namespace tp_cuatrimestral_jannello_vaca
 {
@@ -30,6 +31,7 @@ namespace tp_cuatrimestral_jannello_vaca
                     ((CheckBox)DescuentoRepeater.Items[cont].FindControl("DescuentoActivo")).Checked = item.Activa;
                     cont++;
                 }
+                Session["allDescuentos"] = allDescuentos;
             }
         }
 
@@ -64,6 +66,80 @@ namespace tp_cuatrimestral_jannello_vaca
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertDatosVacios", "alertDatosVacios();", true);
             }
+        }
+
+        protected void MofidicarDescuento(object sender, EventArgs e)
+        {
+            try
+            {
+                var argument = ((Button)sender).CommandArgument;
+                Descuento aux = new Descuento();
+
+                int cont = 0;
+                foreach (Descuento item in ((List<Descuento>)Session["allDescuentos"]))
+                {
+                    if (argument == item.Codigo.ToString() &&
+                       ((TextBox)DescuentoRepeater.Items[cont].FindControl("DescuentoPorcentaje")).Text != "")
+                    {
+                        aux.Codigo = item.Codigo;
+                        aux.Porcentaje = decimal.Parse(((TextBox)DescuentoRepeater.Items[cont].FindControl("DescuentoPorcentaje")).Text);
+                        aux.Activa = ((CheckBox)DescuentoRepeater.Items[cont].FindControl("DescuentoActivo")).Checked;
+
+                        DescuentoNegocio.ModificarCodigo(aux);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alertDatosVacios", "alertDescuentoModificado();", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alertDatosVacios", "alertDatosVacios();", true);
+                    }
+                    cont++;
+                }
+            }
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertDatosVacios", "alertDescuentoRechazado();", true);
+            }
+            finally
+            {
+                updateTablaPromociones();
+                Session["allDescuentos"] = allDescuentos;
+            }
+            
+            
+        }
+
+        protected void EliminarDescuento(object sender, EventArgs e)
+        {
+            try
+            {
+                var argument = ((Button)sender).CommandArgument;
+                Descuento aux = new Descuento();
+
+                int cont = 0;
+                foreach (Descuento item in ((List<Descuento>)Session["allDescuentos"]))
+                {
+                    if (argument == item.Codigo.ToString())
+                    {
+                        aux.Codigo = item.Codigo;
+
+                        DescuentoNegocio.EliminarCodigo(aux);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alertDatosVacios", "alertDescuentoEliminado();", true);
+                        Thread.Sleep(1000);
+                    }
+                    cont++;
+                }
+            }
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertDatosVacios", "alertDescuentoRechazado();", true);
+            }
+            finally
+            {
+                updateTablaPromociones();
+                Session["allDescuentos"] = allDescuentos;
+                Response.Redirect("AdmPromociones.aspx", false);
+            }
+
         }
         private void validateUsuarioLoggeado()
         {

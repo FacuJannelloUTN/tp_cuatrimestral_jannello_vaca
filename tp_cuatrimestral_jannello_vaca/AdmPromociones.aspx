@@ -40,7 +40,7 @@
                             <ItemTemplate>
 						<tr class="bg-white">
 							<td style="width:40%">
-								<asp:TextBox ID="DescuentoNombre" runat="server" TextMode="SingleLine" AutoPostBack="false"></asp:TextBox>
+								<asp:TextBox ID="DescuentoNombre" runat="server" TextMode="SingleLine" AutoPostBack="false" Enabled="false"></asp:TextBox>
 							</td>
 							<td style="width:20%">
 								<asp:TextBox ID="DescuentoPorcentaje" runat="server" TextMode="SingleLine" Min="0" Max="100" AutoPostBack="false"></asp:TextBox>
@@ -50,8 +50,8 @@
 							</td>
 
 							<td class="text-right" style="width:20%">
-								<asp:Button  ID="ButtonA" runat="server" Text="MODIFICAR"		class="btn btn-outline-primary"  />
-								<asp:Button  ID="ButtonD" runat="server" Text="ELIMINAR"		class="btn btn-outline-danger"  />
+								<asp:Button  ID="ButtonA" runat="server" Text="MODIFICAR"	class="btn btn-outline-primary" OnClick="MofidicarDescuento" CommandArgument='<%#Eval("Codigo") %>' />
+								<asp:Button  ID="ButtonD" runat="server" Text="ELIMINAR"	class="btn btn-outline-danger"  OnClick="EliminarDescuento"  CommandArgument='<%#Eval("Codigo") %>'/>
 							</td>
 						</tr>
                         </ItemTemplate>
@@ -90,7 +90,25 @@
             timer: 1500,
             showConfirmButton: false
         })
-	}
+    }
+    function alertDescuentoModificado() {
+        Swal.fire({
+            title: '¡Descuento Modificado!',
+            text: 'Haz Modificado el descuento con éxito',
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false
+        })
+    }
+    function alertDescuentoEliminado() {
+        Swal.fire({
+            title: '¡Descuento Eliminado!',
+            text: 'Haz Eliminado el descuento con éxito',
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false
+        })
+    }
 </script>
 
 </asp:Content>
