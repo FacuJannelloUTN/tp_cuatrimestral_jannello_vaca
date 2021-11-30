@@ -87,13 +87,3 @@ insert into Usuarios values
 ('alanVacaCliente', '12345678', 'alanVacaCliente@hotmail.com', 2),
 ('facuJanello', '12345678', 'facundojannellobaldi@gmail.com', 1),
 ('facuJanelloCliente', '12345678', 'facuJanelloCliente@hotmail.com', 2)
-
-use TPFinalPrograIII
-go
-select * from Carritos
-
-Select C.id id, C.codCompra, C.codDescuento, C.idComprador, C.conEnvio, C.fechaRealizado, C.fechaEntregado, C.finalizado, C.entregado, C.monto,
-D.estado 'estadoDescuento', D.porcentaje 'porcentajeDescuento', U.nombre 'nombreUsuario', U.contrasenia 'contraseniaUsuario', U.mail 'mailUsuario', U.idTipoDeUsuario 'tipoUsuario'
-from Carritos C
-inner join Descuentos D on D.codigo = C.codDescuento
-inner join Usuarios U on U.id = C.idComprador
